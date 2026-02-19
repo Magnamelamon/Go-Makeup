@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './Carousel.css';
 
 interface Slide {
@@ -19,12 +19,18 @@ const Carousel = ({ slides, autoSlide = true, intervalo = 5000 }: CarouselProps)
   const [actual, setActual] = useState(0);
 
   const siguiente = () => {
-    setActual((actual + 1) % slides.length);
+    setActual((prev) => (prev + 1) % slides.length);
   };
 
   const anterior = () => {
-    setActual((actual - 1 + slides.length) % slides.length);
+    setActual((prev) => (prev - 1 + slides.length) % slides.length);
   };
+
+  useEffect(() => {
+    if (!autoSlide) return;
+    const timer = setInterval(siguiente, intervalo);
+    return () => clearInterval(timer);
+  }, [autoSlide, intervalo]);
 
   return (
     <div className="carousel">
