@@ -1,0 +1,155 @@
+.carousel {
+  position: relative;
+  width: 100%;
+  height: 600px;
+  overflow: hidden;
+}
+
+.carousel-track {
+  display: flex;
+  height: 100%;
+  transition: transform 0.5s ease-in-out;
+}
+
+.carousel-slide {
+  min-width: 100%;
+  height: 100%;
+  display: flex;
+  background: linear-gradient(135deg, var(--color-nude-rosado-1) 0%, var(--color-nude-rosado-2) 100%);
+}
+
+.carousel-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 80px;
+}
+
+.carousel-subtitulo {
+  font-size: 1rem;
+  color: var(--color-dorado);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 16px;
+}
+
+.carousel-titulo {
+  font-size: 3.5rem;
+  color: var(--color-rosa-vibrante);
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: 24px;
+}
+
+.carousel-boton {
+  display: inline-block;
+  width: fit-content;
+}
+
+.carousel-imagen {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+}
+
+.carousel-imagen img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background-color: var(--color-blanco);
+  color: var(--color-rosa-vibrante);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--sombra);
+  transition: var(--transicion);
+  z-index: 10;
+}
+
+.carousel-btn:hover {
+  background-color: var(--color-rosa-vibrante);
+  color: var(--color-blanco);
+}
+
+.carousel-btn-left {
+  left: 24px;
+}
+
+.carousel-btn-right {
+  right: 24px;
+}
+
+.carousel-dots {
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 12px;
+}
+
+.carousel-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: var(--color-blanco);
+  opacity: 0.5;
+  transition: var(--transicion);
+}
+
+.carousel-dot.active {
+  opacity: 1;
+  background-color: var(--color-rosa-vibrante);
+  transform: scale(1.2);
+}
+
+@media (max-width: 1024px) {
+  .carousel {
+    height: 500px;
+  }
+
+  .carousel-content {
+    padding: 0 40px;
+  }
+
+  .carousel-titulo {
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .carousel {
+    height: 400px;
+  }
+
+  .carousel-slide {
+    flex-direction: column;
+  }
+
+  .carousel-content {
+    padding: 20px;
+    text-align: center;
+    align-items: center;
+  }
+
+  .carousel-titulo {
+    font-size: 1.8rem;
+  }
+
+  .carousel-imagen {
+    display: none;
+  }
+}

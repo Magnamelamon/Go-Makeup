@@ -1,0 +1,130 @@
+.catalogo {
+  padding-top: 100px;
+  min-height: 100vh;
+}
+
+.catalogo-header {
+  background: linear-gradient(135deg, var(--color-rosa-vibrante) 0%, #e5517a 100%);
+  padding: 40px 0;
+  color: var(--color-blanco);
+}
+
+.catalogo-header h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+.catalogo-header p {
+  opacity: 0.9;
+  margin-top: 8px;
+}
+
+.catalogo-container {
+  display: flex;
+  gap: 40px;
+  padding: 40px 20px;
+}
+
+.catalogo-filtros {
+  width: 250px;
+  flex-shrink: 0;
+}
+
+.catalogo-filtros h3 {
+  font-size: 1.1rem;
+  color: var(--color-rosa-vibrante);
+  margin-bottom: 16px;
+}
+
+.catalogo-filtros ul {
+  list-style: none;
+}
+
+.catalogo-filtros ul li {
+  margin-bottom: 12px;
+}
+
+.catalogo-filtros ul li a {
+  color: var(--color-texto);
+  font-weight: 500;
+  transition: var(--transicion);
+}
+
+.catalogo-filtros ul li a:hover {
+  color: var(--color-rosa-vibrante);
+  padding-left: 8px;
+}
+
+.catalogo-productos {
+  flex: 1;
+}
+
+.productos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 24px;
+}
+
+.catalogo-categorias {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 40px;
+}
+
+.categoria-tarjeta {
+  aspect-ratio: 1;
+  border-radius: var(--borde-radio);
+  overflow: hidden;
+  position: relative;
+  display: block;
+}
+
+.categoria-tarjeta img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: var(--transicion);
+}
+
+.categoria-tarjeta:hover img {
+  transform: scale(1.1);
+}
+
+.categoria-tarjeta span {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(240, 98, 146, 0.9);
+  color: var(--color-blanco);
+  padding: 12px;
+  text-align: center;
+  font-weight: 600;
+}
+
+@media (max-width: 1024px) {
+  .catalogo-container {
+    flex-direction: column;
+  }
+
+  .catalogo-filtros {
+    width: 100%;
+  }
+
+  .catalogo-filtros ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .catalogo-categorias {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .catalogo-categorias {
+    grid-template-columns: 1fr;
+  }
+}

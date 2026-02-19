@@ -1,0 +1,124 @@
+.home {
+  padding-top: 80px;
+}
+
+.categorias-section {
+  padding: 60px 0;
+  background-color: var(--color-blanco);
+}
+
+.categorias-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.categoria-card {
+  position: relative;
+  aspect-ratio: 1;
+  border-radius: var(--borde-radio);
+  overflow: hidden;
+  display: block;
+}
+
+.categoria-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: var(--transicion);
+}
+
+.categoria-card:hover img {
+  transform: scale(1.1);
+}
+
+.categoria-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to top, rgba(240, 98, 146, 0.8), transparent);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 24px;
+}
+
+.categoria-overlay h3 {
+  color: var(--color-blanco);
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.productos-section {
+  background-color: var(--color-nude-rosado-1);
+}
+
+.banner-promo {
+  display: flex;
+  align-items: center;
+  background: linear-gradient(135deg, var(--color-rosa-vibrante) 0%, #e5517a 100%);
+  overflow: hidden;
+}
+
+.banner-content {
+  flex: 1;
+  padding: 60px;
+  color: var(--color-blanco);
+}
+
+.banner-subtitulo {
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--color-dorado);
+  font-weight: 600;
+}
+
+.banner-titulo {
+  font-size: 3rem;
+  font-weight: 800;
+  margin: 16px 0;
+}
+
+.banner-descripcion {
+  font-size: 1.1rem;
+  opacity: 0.9;
+  margin-bottom: 24px;
+}
+
+.banner-imagen {
+  flex: 1;
+  padding: 40px;
+}
+
+.banner-imagen img {
+  max-width: 100%;
+  border-radius: var(--borde-radio);
+}
+
+@media (max-width: 1024px) {
+  .categorias-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .banner-promo {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .banner-content {
+    padding: 40px 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .categorias-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .banner-titulo {
+    font-size: 2rem;
+  }
+}
