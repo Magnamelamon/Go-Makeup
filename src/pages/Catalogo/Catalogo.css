@@ -74,21 +74,26 @@
 
 .categoria-tarjeta {
   aspect-ratio: 1;
-  border-radius: var(--borde-radio);
+  border-radius: var(--borde-radio-lg);
   overflow: hidden;
   position: relative;
   display: block;
+  box-shadow: var(--sombra);
 }
 
 .categoria-tarjeta img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: var(--transicion);
+  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.categoria-tarjeta:hover {
+  box-shadow: var(--sombra-hover);
 }
 
 .categoria-tarjeta:hover img {
-  transform: scale(1.1);
+  transform: scale(1.08);
 }
 
 .categoria-tarjeta span {
@@ -96,7 +101,7 @@
   bottom: 0;
   left: 0;
   right: 0;
-  background: rgba(240, 98, 146, 0.9);
+  background: rgba(255, 43, 115, 0.85);
   color: var(--color-blanco);
   padding: 12px;
   text-align: center;

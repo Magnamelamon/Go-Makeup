@@ -1,0 +1,1252 @@
+[
+  {
+    "id": "prod_001",
+    "nombre": "Pintura Labial Velvet Mate",
+    "descripcion": "Pintura labial de acabado mate aterciopelado con larga duración. Fórmula enriquecida con vitaminas E y jojoba para hidratación intensiva.",
+    "categoria": "Labios",
+    "variantes": [
+      {
+        "id_variante": "var_001_1",
+        "color": "#D4A5A5",
+        "color_nombre": "Rose Nude",
+        "precio": 24.99,
+        "precio_descuento": 19.99,
+        "stock": 15,
+        "imagenes": [
+          "https://images.unsplash.com/photo-1586495777744-4413f21062fa?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1625093742435-6fa192b6fb10?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1571781535014-53bd94aa31d9?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1629198688000-71f23e745b6e?w=600&h=600&fit=crop"
+        ]
+      },
+      {
+        "id_variante": "var_001_2",
+        "color": "#C41E3A",
+        "color_nombre": "Ruby Red",
+        "precio": 24.99,
+        "precio_descuento": null,
+        "stock": 8,
+        "imagenes": [
+          "https://images.unsplash.com/photo-1586495777744-4413f21062fa?w=600&h=600&fit=crop&sat=-100",
+          "https://images.unsplash.com/photo-1625093742435-6fa192b6fb10?w=600&h=600&fit=crop&sat=-100",
+          "https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=600&h=600&fit=crop&sat=-100",
+          "https://images.unsplash.com/photo-1571781535014-53bd94aa31d9?w=600&h=600&fit=crop&sat=-100",
+          "https://images.unsplash.com/photo-1629198688000-71f23e745b6e?w=600&h=600&fit=crop&sat=-100"
+        ]
+      },
+      {
+        "id_variante": "var_001_3",
+        "color": "#FF7F50",
+        "color_nombre": "Coral Sunset",
+        "precio": 24.99,
+        "precio_descuento": 22.99,
+        "stock": 20,
+        "imagenes": [
+          "https://images.unsplash.com/photo-1586495777744-4413f21062fa?w=600&h=600&fit=crop&hue=40",
+          "https://images.unsplash.com/photo-1625093742435-6fa192b6fb10?w=600&h=600&fit=crop&hue=40",
+          "https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=600&h=600&fit=crop&hue=40",
+          "https://images.unsplash.com/photo-1571781535014-53bd94aa31d9?w=600&h=600&fit=crop&hue=40",
+          "https://images.unsplash.com/photo-1629198688000-71f23e745b6e?w=600&h=600&fit=crop&hue=40"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "prod_002",
+    "nombre": "Paleta Sombras 12 Tonos Premium",
+    "descripcion": "Paleta profesional de 12 sombras con acabado mate y shimmer. Pigmentación intensa de larga duración.",
+    "categoria": "Ojos",
+    "variantes": [
+      {
+        "id_variante": "var_002_1",
+        "color": "#E8A87C",
+        "color_nombre": "Warm Tones",
+        "precio": 49.99,
+        "precio_descuento": 39.99,
+        "stock": 12,
+        "imagenes": [
+          "https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1599733589046-033e2d247f47?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1560891958-68bb1b0e49f6?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1522337660859-02fbefca4702?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1596704017254-9b121068fb31?w=600&h=600&fit=crop"
+        ]
+      },
+      {
+        "id_variante": "var_002_2",
+        "color": "#9B8AA5",
+        "color_nombre": "Cool Tones",
+        "precio": 49.99,
+        "precio_descuento": null,
+        "stock": 7,
+        "imagenes": [
+          "https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=600&h=600&fit=crop&sat=-40",
+          "https://images.unsplash.com/photo-1599733589046-033e2d247f47?w=600&h=600&fit=crop&sat=-40",
+          "https://images.unsplash.com/photo-1560891958-68bb1b0e49f6?w=600&h=600&fit=crop&sat=-40",
+          "https://images.unsplash.com/photo-1522337660859-02fbefca4702?w=600&h=600&fit=crop&sat=-40",
+          "https://images.unsplash.com/photo-1596704017254-9b121068fb31?w=600&h=600&fit=crop&sat=-40"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "prod_003",
+    "nombre": "Base Fluida Skin Finish",
+    "descripcion": "Base de cobertura media a alta con acabado natural. Fórmula ligera con ácido hialurónico.",
+    "categoria": "Rostro",
+    "variantes": [
+      {
+        "id_variante": "var_003_1",
+        "color": "#F5DEB3",
+        "color_nombre": "Ivory 150",
+        "precio": 38.99,
+        "precio_descuento": null,
+        "stock": 10,
+        "imagenes": [
+          "https://images.unsplash.com/photo-1631214524020-7e18db9a8f92?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1616683693504-3ea7e9ad6fec?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1608248597279-f99d160bfcbc?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=600&h=600&fit=crop"
+        ]
+      },
+      {
+        "id_variante": "var_003_2",
+        "color": "#D2B48C",
+        "color_nombre": "Sand 220",
+        "precio": 38.99,
+        "precio_descuento": 32.99,
+        "stock": 18,
+        "imagenes": [
+          "https://images.unsplash.com/photo-1631214524020-7e18db9a8f92?w=600&h=600&fit=crop&hue=20",
+          "https://images.unsplash.com/photo-1616683693504-3ea7e9ad6fec?w=600&h=600&fit=crop&hue=20",
+          "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=600&h=600&fit=crop&hue=20",
+          "https://images.unsplash.com/photo-1608248597279-f99d160bfcbc?w=600&h=600&fit=crop&hue=20",
+          "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=600&h=600&fit=crop&hue=20"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "prod_004",
+    "nombre": "Gloss Labial Brillo Intenso",
+    "descripcion": "Gloss de acabado brillante con efecto volumen. Fórmula nutritiva con aceite de argán.",
+    "categoria": "Labios",
+    "variantes": [
+      {
+        "id_variante": "var_004_1",
+        "color": "#FFB6C1",
+        "color_nombre": "Pink Bubble",
+        "precio": 18.99,
+        "precio_descuento": 14.99,
+        "stock": 25,
+        "imagenes": [
+          "https://images.unsplash.com/photo-1586495777744-4413f21062fa?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1625093742435-6fa192b6fb10?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1571781535014-53bd94aa31d9?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1629198688000-71f23e745b6e?w=600&h=600&fit=crop"
+        ]
+      },
+      {
+        "id_variante": "var_004_2",
+        "color": "#FF69B4",
+        "color_nombre": "Hot Pink",
+        "precio": 18.99,
+        "precio_descuento": null,
+        "stock": 12,
+        "imagenes": [
+          "https://images.unsplash.com/photo-1586495777744-4413f21062fa?w=600&h=600&fit=crop&hue=-20",
+          "https://images.unsplash.com/photo-1625093742435-6fa192b6fb10?w=600&h=600&fit=crop&hue=-20",
+          "https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=600&h=600&fit=crop&hue=-20",
+          "https://images.unsplash.com/photo-1571781535014-53bd94aa31d9?w=600&h=600&fit=crop&hue=-20",
+          "https://images.unsplash.com/photo-1629198688000-71f23e745b6e?w=600&h=600&fit=crop&hue=-20"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "prod_005",
+    "nombre": "Delineador Líquido Precision",
+    "descripcion": "Delineador de punta ultrafina con fórmula resistente al agua. Secado rápido y duración hasta 24 horas.",
+    "categoria": "Ojos",
+    "variantes": [
+      {
+        "id_variante": "var_005_1",
+        "color": "#000000",
+        "color_nombre": "Black",
+        "precio": 16.99,
+        "precio_descuento": null,
+        "stock": 30,
+        "imagenes": [
+          "https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1599733589046-033e2d247f47?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1560891958-68bb1b0e49f6?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1522337660859-02fbefca4702?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1596704017254-9b121068fb31?w=600&h=600&fit=crop"
+        ]
+      },
+      {
+        "id_variante": "var_005_2",
+        "color": "#4B0082",
+        "color_nombre": "Deep Purple",
+        "precio": 16.99,
+        "precio_descuento": 12.99,
+        "stock": 18,
+        "imagenes": [
+          "https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=600&h=600&fit=crop&hue=60",
+          "https://images.unsplash.com/photo-1599733589046-033e2d247f47?w=600&h=600&fit=crop&hue=60",
+          "https://images.unsplash.com/photo-1560891958-68bb1b0e49f6?w=600&h=600&fit=crop&hue=60",
+          "https://images.unsplash.com/photo-1522337660859-02fbefca4702?w=600&h=600&fit=crop&hue=60",
+          "https://images.unsplash.com/photo-1596704017254-9b121068fb31?w=600&h=600&fit=crop&hue=60"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "prod_006",
+    "nombre": "Esmalte Gel Semipermanente",
+    "descripcion": "Esmalte efecto gel de larga duración. Brillo intenso que dura hasta 14 días sin astillarse.",
+    "categoria": "Uñas",
+    "variantes": [
+      {
+        "id_variante": "var_006_1",
+        "color": "#FF1493",
+        "color_nombre": "Deep Pink",
+        "precio": 14.99,
+        "precio_descuento": 11.99,
+        "stock": 22,
+        "imagenes": [
+          "https://images.unsplash.com/photo-1604654894610-df63bc536371?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1632345031635-0b23c0225561?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1604654894610-df63bc536371?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?w=600&h=600&fit=crop"
+        ]
+      },
+      {
+        "id_variante": "var_006_2",
+        "color": "#FFD700",
+        "color_nombre": "Gold",
+        "precio": 14.99,
+        "precio_descuento": null,
+        "stock": 15,
+        "imagenes": [
+          "https://images.unsplash.com/photo-1604654894610-df63bc536371?w=600&h=600&fit=crop&hue=40",
+          "https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?w=600&h=600&fit=crop&hue=40",
+          "https://images.unsplash.com/photo-1632345031635-0b23c0225561?w=600&h=600&fit=crop&hue=40",
+          "https://images.unsplash.com/photo-1604654894610-df63bc536371?w=600&h=600&fit=crop&hue=40",
+          "https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?w=600&h=600&fit=crop&hue=40"
+        ]
+      },
+      {
+        "id_variante": "var_006_3",
+        "color": "#DC143C",
+        "color_nombre": "Crimson",
+        "precio": 14.99,
+        "precio_descuento": null,
+        "stock": 20,
+        "imagenes": [
+          "https://images.unsplash.com/photo-1604654894610-df63bc536371?w=600&h=600&fit=crop&hue=-20",
+          "https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?w=600&h=600&fit=crop&hue=-20",
+          "https://images.unsplash.com/photo-1632345031635-0b23c0225561?w=600&h=600&fit=crop&hue=-20",
+          "https://images.unsplash.com/photo-1604654894610-df63bc536371?w=600&h=600&fit=crop&hue=-20",
+          "https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?w=600&h=600&fit=crop&hue=-20"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "prod_007",
+    "nombre": "Mascara de Pestañas Volume",
+    "descripcion": "Máscara de volumen ultra negro con fórmula extensible. Cepillo de fibra para máximo volumen.",
+    "categoria": "Ojos",
+    "variantes": [
+      {
+        "id_variante": "var_007_1",
+        "color": "#000000",
+        "color_nombre": "Black",
+        "precio": 22.99,
+        "precio_descuento": 18.99,
+        "stock": 20,
+        "imagenes": [
+          "https://images.unsplash.com/photo-1631214524020-7e18db9a8f92?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1616683693504-3ea7e9ad6fec?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1608248597279-f99d160bfcbc?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=600&h=600&fit=crop"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "prod_008",
+    "nombre": "Rubor en Polvo Mineral",
+    "descripcion": "Rubor de acabado satinado con pigmentación modulable. Fórmula mineral enriquecida.",
+    "categoria": "Rostro",
+    "variantes": [
+      {
+        "id_variante": "var_008_1",
+        "color": "#FFB7B2",
+        "color_nombre": "Peachy Keen",
+        "precio": 21.99,
+        "precio_descuento": null,
+        "stock": 16,
+        "imagenes": [
+          "https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1571781535014-53bd94aa31d9?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1629198688000-71f23e745b6e?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1586495777744-4413f21062fa?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1625093742435-6fa192b6fb10?w=600&h=600&fit=crop"
+        ]
+      },
+      {
+        "id_variante": "var_008_2",
+        "color": "#E9967A",
+        "color_nombre": "Dark Salmon",
+        "precio": 21.99,
+        "precio_descuento": 17.99,
+        "stock": 14,
+        "imagenes": [
+          "https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=600&h=600&fit=crop&hue=20",
+          "https://images.unsplash.com/photo-1571781535014-53bd94aa31d9?w=600&h=600&fit=crop&hue=20",
+          "https://images.unsplash.com/photo-1629198688000-71f23e745b6e?w=600&h=600&fit=crop&hue=20",
+          "https://images.unsplash.com/photo-1586495777744-4413f21062fa?w=600&h=600&fit=crop&hue=20",
+          "https://images.unsplash.com/photo-1625093742435-6fa192b6fb10?w=600&h=600&fit=crop&hue=20"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "prod_009",
+    "nombre": "Labial Crema Soft Finish",
+    "descripcion": "Labial de acabado cremoso con hidratación intensiva. Color buildable de larga duración.",
+    "categoria": "Labios",
+    "variantes": [
+      {
+        "id_variante": "var_009_1",
+        "color": "#BC8F8F",
+        "color_nombre": "Rosy Brown",
+        "precio": 19.99,
+        "precio_descuento": 15.99,
+        "stock": 18,
+        "imagenes": [
+          "https://images.unsplash.com/photo-1586495777744-4413f21062fa?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1625093742435-6fa192b6fb10?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1571781535014-53bd94aa31d9?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1629198688000-71f23e745b6e?w=600&h=600&fit=crop"
+        ]
+      },
+      {
+        "id_variante": "var_009_2",
+        "color": "#CD5C5C",
+        "color_nombre": "Indian Red",
+        "precio": 19.99,
+        "precio_descuento": null,
+        "stock": 10,
+        "imagenes": [
+          "https://images.unsplash.com/photo-1586495777744-4413f21062fa?w=600&h=600&fit=crop&hue=-20",
+          "https://images.unsplash.com/photo-1625093742435-6fa192b6fb10?w=600&h=600&fit=crop&hue=-20",
+          "https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=600&h=600&fit=crop&hue=-20",
+          "https://images.unsplash.com/photo-1571781535014-53bd94aa31d9?w=600&h=600&fit=crop&hue=-20",
+          "https://images.unsplash.com/photo-1629198688000-71f23e745b6e?w=600&h=600&fit=crop&hue=-20"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "prod_010",
+    "nombre": "Corrector de Ojeras",
+    "descripcion": "Corrector líquido de cobertura completa con propiedades iluminadoras. Oculta ojeras y manchas.",
+    "categoria": "Rostro",
+    "variantes": [
+      {
+        "id_variante": "var_010_1",
+        "color": "#FFE4C4",
+        "color_nombre": "Bisque",
+        "precio": 24.99,
+        "precio_descuento": null,
+        "stock": 12,
+        "imagenes": [
+          "https://images.unsplash.com/photo-1631214524020-7e18db9a8f92?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1616683693504-3ea7e9ad6fec?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1608248597279-f99d160bfcbc?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=600&h=600&fit=crop"
+        ]
+      },
+      {
+        "id_variante": "var_010_2",
+        "color": "#F5DEB3",
+        "color_nombre": "Wheat",
+        "precio": 24.99,
+        "precio_descuento": 20.99,
+        "stock": 15,
+        "imagenes": [
+          "https://images.unsplash.com/photo-1631214524020-7e18db9a8f92?w=600&h=600&fit=crop&hue=10",
+          "https://images.unsplash.com/photo-1616683693504-3ea7e9ad6fec?w=600&h=600&fit=crop&hue=10",
+          "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=600&h=600&fit=crop&hue=10",
+          "https://images.unsplash.com/photo-1608248597279-f99d160bfcbc?w=600&h=600&fit=crop&hue=10",
+          "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=600&h=600&fit=crop&hue=10"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "prod_011",
+    "nombre": "Delineador en Gel",
+    "descripcion": "Delineador en gel de larga duración con aplicador de punta precisa. Acabado matte perfecto.",
+    "categoria": "Ojos",
+    "variantes": [
+      {
+        "id_variante": "var_011_1",
+        "color": "#000000",
+        "color_nombre": "Onyx",
+        "precio": 17.99,
+        "precio_descuento": null,
+        "stock": 25,
+        "imagenes": [
+          "https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1599733589046-033e2d247f47?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1560891958-68bb1b0e49f6?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1522337660859-02fbefca4702?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1596704017254-9b121068fb31?w=600&h=600&fit=crop"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "prod_012",
+    "nombre": "Esmalte Gel Neon",
+    "descripcion": "Esmalte de gel con acabados neón vibrantes. Color de alta pigmentación.",
+    "categoria": "Uñas",
+    "variantes": [
+      {
+        "id_variante": "var_012_1",
+        "color": "#00FF00",
+        "color_nombre": "Neon Green",
+        "precio": 12.99,
+        "precio_descuento": 9.99,
+        "stock": 30,
+        "imagenes": [
+          "https://images.unsplash.com/photo-1604654894610-df63bc536371?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1632345031635-0b23c0225561?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1604654894610-df63bc536371?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?w=600&h=600&fit=crop"
+        ]
+      },
+      {
+        "id_variante": "var_012_2",
+        "color": "#FF00FF",
+        "color_nombre": "Neon Pink",
+        "precio": 12.99,
+        "precio_descuento": null,
+        "stock": 28,
+        "imagenes": [
+          "https://images.unsplash.com/photo-1604654894610-df63bc536371?w=600&h=600&fit=crop&hue=-40",
+          "https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?w=600&h=600&fit=crop&hue=-40",
+          "https://images.unsplash.com/photo-1632345031635-0b23c0225561?w=600&h=600&fit=crop&hue=-40",
+          "https://images.unsplash.com/photo-1604654894610-df63bc536371?w=600&h=600&fit=crop&hue=-40",
+          "https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?w=600&h=600&fit=crop&hue=-40"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "prod_013",
+    "nombre": "Iluminador Líquido",
+    "descripcion": "Iluminador líquido con partículas reflectantes. Aporta glow natural a la piel.",
+    "categoria": "Rostro",
+    "variantes": [
+      {
+        "id_variante": "var_013_1",
+        "color": "#FFD700",
+        "color_nombre": "Golden",
+        "precio": 26.99,
+        "precio_descuento": 22.99,
+        "stock": 14,
+        "imagenes": [
+          "https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1571781535014-53bd94aa31d9?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1629198688000-71f23e745b6e?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1586495777744-4413f21062fa?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1625093742435-6fa192b6fb10?w=600&h=600&fit=crop"
+        ]
+      },
+      {
+        "id_variante": "var_013_2",
+        "color": "#FFB6C1",
+        "color_nombre": "Rose",
+        "precio": 26.99,
+        "precio_descuento": null,
+        "stock": 11,
+        "imagenes": [
+          "https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=600&h=600&fit=crop&hue=-30",
+          "https://images.unsplash.com/photo-1571781535014-53bd94aa31d9?w=600&h=600&fit=crop&hue=-30",
+          "https://images.unsplash.com/photo-1629198688000-71f23e745b6e?w=600&h=600&fit=crop&hue=-30",
+          "https://images.unsplash.com/photo-1586495777744-4413f21062fa?w=600&h=600&fit=crop&hue=-30",
+          "https://images.unsplash.com/photo-1625093742435-6fa192b6fb10?w=600&h=600&fit=crop&hue=-30"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "prod_014",
+    "nombre": "Paleta Contouring",
+    "descripcion": "Paleta de contouring con 6 tonos para esculpir el rostro. Textura cremosa blendable.",
+    "categoria": "Rostro",
+    "variantes": [
+      {
+        "id_variante": "var_014_1",
+        "color": "#D2691E",
+        "color_nombre": "Chocolate",
+        "precio": 34.99,
+        "precio_descuento": 29.99,
+        "stock": 8,
+        "imagenes": [
+          "https://images.unsplash.com/photo-1631214524020-7e18db9a8f92?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1616683693504-3ea7e9ad6fec?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1608248597279-f99d160bfcbc?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=600&h=600&fit=crop"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "prod_015",
+    "nombre": "Brillo de Labios Largo Plazo",
+    "descripcion": "Brillo labial de larga duración con efecto Gloss. No se transfiere.",
+    "categoria": "Labios",
+    "variantes": [
+      {
+        "id_variante": "var_015_1",
+        "color": "#E6E6FA",
+        "color_nombre": "Lavender",
+        "precio": 20.99,
+        "precio_descuento": null,
+        "stock": 16,
+        "imagenes": [
+          "https://images.unsplash.com/photo-1586495777744-4413f21062fa?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1625093742435-6fa192b6fb10?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1571781535014-53bd94aa31d9?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1629198688000-71f23e745b6e?w=600&h=600&fit=crop"
+        ]
+      },
+      {
+        "id_variante": "var_015_2",
+        "color": "#98FB98",
+        "color_nombre": "Pale Green",
+        "precio": 20.99,
+        "precio_descuento": 16.99,
+        "stock": 12,
+        "imagenes": [
+          "https://images.unsplash.com/photo-1586495777744-4413f21062fa?w=600&h=600&fit=crop&hue=60",
+          "https://images.unsplash.com/photo-1625093742435-6fa192b6fb10?w=600&h=600&fit=crop&hue=60",
+          "https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=600&h=600&fit=crop&hue=60",
+          "https://images.unsplash.com/photo-1571781535014-53bd94aa31d9?w=600&h=600&fit=crop&hue=60",
+          "https://images.unsplash.com/photo-1629198688000-71f23e745b6e?w=600&h=600&fit=crop&hue=60"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "prod_016",
+    "nombre": "Serum LabialTratamiento",
+    "descripcion": "Tratamiento labial con ácido hialurónico. Hidratación intensiva día y noche.",
+    "categoria": "Labios",
+    "variantes": [
+      {
+        "id_variante": "var_016_1",
+        "color": "#FFC0CB",
+        "color_nombre": "Pink",
+        "precio": 15.99,
+        "precio_descuento": null,
+        "stock": 35,
+        "imagenes": [
+          "https://images.unsplash.com/photo-1586495777744-4413f21062fa?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1625093742435-6fa192b6fb10?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1571781535014-53bd94aa31d9?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1629198688000-71f23e745b6e?w=600&h=600&fit=crop"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "prod_017",
+    "nombre": "Spray Fijador de Maquillaje",
+    "descripcion": "Fijador de maquillaje de larga duración. Mantiene el look perfecto hasta 16 horas.",
+    "categoria": "Rostro",
+    "variantes": [
+      {
+        "id_variante": "var_017_1",
+        "color": "#E0FFFF",
+        "color_nombre": "Light Cyan",
+        "precio": 28.99,
+        "precio_descuento": 24.99,
+        "stock": 10,
+        "imagenes": [
+          "https://images.unsplash.com/photo-1631214524020-7e18db9a8f92?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1616683693504-3ea7e9ad6fec?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1608248597279-f99d160bfcbc?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=600&h=600&fit=crop"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "prod_018",
+    "nombre": "Delineador de Cejas",
+    "descripcion": "Delineador de cejas waterproof con cerdas precisas. Cejas perfectas y naturales.",
+    "categoria": "Ojos",
+    "variantes": [
+      {
+        "id_variante": "var_018_1",
+        "color": "#4A3728",
+        "color_nombre": "Dark Brown",
+        "precio": 14.99,
+        "precio_descuento": null,
+        "stock": 22,
+        "imagenes": [
+          "https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1599733589046-033e2d247f47?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1560891958-68bb1b0e49f6?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1522337660859-02fbefca4702?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1596704017254-9b121068fb31?w=600&h=600&fit=crop"
+        ]
+      },
+      {
+        "id_variante": "var_018_2",
+        "color": "#8B7355",
+        "color_nombre": "Auburn",
+        "precio": 14.99,
+        "precio_descuento": 11.99,
+        "stock": 18,
+        "imagenes": [
+          "https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=600&h=600&fit=crop&hue=20",
+          "https://images.unsplash.com/photo-1599733589046-033e2d247f47?w=600&h=600&fit=crop&hue=20",
+          "https://images.unsplash.com/photo-1560891958-68bb1b0e49f6?w=600&h=600&fit=crop&hue=20",
+          "https://images.unsplash.com/photo-1522337660859-02fbefca4702?w=600&h=600&fit=crop&hue=20",
+          "https://images.unsplash.com/photo-1596704017254-9b121068fb31?w=600&h=600&fit=crop&hue=20"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "prod_019",
+    "nombre": "Esmalte Gel French",
+    "descripcion": "Esmalte efecto French manicure profesional. Acabado natural y elegante.",
+    "categoria": "Uñas",
+    "variantes": [
+      {
+        "id_variante": "var_019_1",
+        "color": "#FFFACD",
+        "color_nombre": "Lemon Chiffon",
+        "precio": 13.99,
+        "precio_descuento": null,
+        "stock": 25,
+        "imagenes": [
+          "https://images.unsplash.com/photo-1604654894610-df63bc536371?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1632345031635-0b23c0225561?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1604654894610-df63bc536371?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?w=600&h=600&fit=crop"
+        ]
+      },
+      {
+        "id_variante": "var_019_2",
+        "color": "#FFE4E1",
+        "color_nombre": "Misty Rose",
+        "precio": 13.99,
+        "precio_descuento": 10.99,
+        "stock": 20,
+        "imagenes": [
+          "https://images.unsplash.com/photo-1604654894610-df63bc536371?w=600&h=600&fit=crop&hue=-10",
+          "https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?w=600&h=600&fit=crop&hue=-10",
+          "https://images.unsplash.com/photo-1632345031635-0b23c0225561?w=600&h=600&fit=crop&hue=-10",
+          "https://images.unsplash.com/photo-1604654894610-df63bc536371?w=600&h=600&fit=crop&hue=-10",
+          "https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?w=600&h=600&fit=crop&hue=-10"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "prod_020",
+    "nombre": "Paleta Sombras Glitter",
+    "descripcion": "Paleta de sombras con acabados glitter y shimmer. Brillo multidimensional.",
+    "categoria": "Ojos",
+    "variantes": [
+      {
+        "id_variante": "var_020_1",
+        "color": "#FFD700",
+        "color_nombre": "Gold Rush",
+        "precio": 44.99,
+        "precio_descuento": 38.99,
+        "stock": 9,
+        "imagenes": [
+          "https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1599733589046-033e2d247f47?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1560891958-68bb1b0e49f6?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1522337660859-02fbefca4702?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1596704017254-9b121068fb31?w=600&h=600&fit=crop"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "prod_021",
+    "nombre": "Bálsamo Labial SPF",
+    "descripcion": "Bálsamo labial con protección solar SPF 30. Hidratación y protección.",
+    "categoria": "Labios",
+    "variantes": [
+      {
+        "id_variante": "var_021_1",
+        "color": "#FFDEAD",
+        "color_nombre": "Peach",
+        "precio": 9.99,
+        "precio_descuento": null,
+        "stock": 40,
+        "imagenes": [
+          "https://images.unsplash.com/photo-1586495777744-4413f21062fa?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1625093742435-6fa192b6fb10?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1571781535014-53bd94aa31d9?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1629198688000-71f23e745b6e?w=600&h=600&fit=crop"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "prod_022",
+    "nombre": "Primor de Pestañas",
+    "descripcion": "Primer de pestañas que potencia el volumen y longitud. Base nutritiva.",
+    "categoria": "Ojos",
+    "variantes": [
+      {
+        "id_variante": "var_022_1",
+        "color": "#000000",
+        "color_nombre": "Black",
+        "precio": 12.99,
+        "precio_descuento": 9.99,
+        "stock": 20,
+        "imagenes": [
+          "https://images.unsplash.com/photo-1631214524020-7e18db9a8f92?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1616683693504-3ea7e9ad6fec?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1608248597279-f99d160bfcbc?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=600&h=600&fit=crop"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "prod_023",
+    "nombre": "Polvo Translúcido",
+    "descripcion": "Polvo translúcido de acabado mate. Fijación perfecta sin peso.",
+    "categoria": "Rostro",
+    "variantes": [
+      {
+        "id_variante": "var_023_1",
+        "color": "#FFFAFA",
+        "color_nombre": "Snow",
+        "precio": 29.99,
+        "precio_descuento": null,
+        "stock": 15,
+        "imagenes": [
+          "https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1571781535014-53bd94aa31d9?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1629198688000-71f23e745b6e?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1586495777744-4413f21062fa?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1625093742435-6fa192b6fb10?w=600&h=600&fit=crop"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "prod_024",
+    "nombre": "Esmalte Gel Mate",
+    "descripcion": "Esmalte de gel con acabado mate sofisticado. Colores de tendencia.",
+    "categoria": "Uñas",
+    "variantes": [
+      {
+        "id_variante": "var_024_1",
+        "color": "#708090",
+        "color_nombre": "Slate Gray",
+        "precio": 14.99,
+        "precio_descuento": 11.99,
+        "stock": 18,
+        "imagenes": [
+          "https://images.unsplash.com/photo-1604654894610-df63bc536371?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1632345031635-0b23c0225561?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1604654894610-df63bc536371?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?w=600&h=600&fit=crop"
+        ]
+      },
+      {
+        "id_variante": "var_024_2",
+        "color": "#2F4F4F",
+        "color_nombre": "Dark Slate Gray",
+        "precio": 14.99,
+        "precio_descuento": null,
+        "stock": 14,
+        "imagenes": [
+          "https://images.unsplash.com/photo-1604654894610-df63bc536371?w=600&h=600&fit=crop&hue=-20",
+          "https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?w=600&h=600&fit=crop&hue=-20",
+          "https://images.unsplash.com/photo-1632345031635-0b23c0225561?w=600&h=600&fit=crop&hue=-20",
+          "https://images.unsplash.com/photo-1604654894610-df63bc536371?w=600&h=600&fit=crop&hue=-20",
+          "https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?w=600&h=600&fit=crop&hue=-20"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "prod_025",
+    "nombre": "Delineador Automático",
+    "descripcion": "Delineador automático de punta retráctil. Aplicación precisa y fácil.",
+    "categoria": "Ojos",
+    "variantes": [
+      {
+        "id_variante": "var_025_1",
+        "color": "#000000",
+        "color_nombre": "Midnight",
+        "precio": 11.99,
+        "precio_descuento": null,
+        "stock": 30,
+        "imagenes": [
+          "https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1599733589046-033e2d247f47?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1560891958-68bb1b0e49f6?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1522337660859-02fbefca4702?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1596704017254-9b121068fb31?w=600&h=600&fit=crop"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "prod_026",
+    "nombre": "Crema BB Hydrating",
+    "descripcion": "Crema BB con propiedades hidratantes y cobertura ligera. Piel natural y luminosa.",
+    "categoria": "Rostro",
+    "variantes": [
+      {
+        "id_variante": "var_026_1",
+        "color": "#DEB887",
+        "color_nombre": "Burlywood",
+        "precio": 32.99,
+        "precio_descuento": 27.99,
+        "stock": 12,
+        "imagenes": [
+          "https://images.unsplash.com/photo-1631214524020-7e18db9a8f92?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1616683693504-3ea7e9ad6fec?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1608248597279-f99d160bfcbc?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=600&h=600&fit=crop"
+        ]
+      },
+      {
+        "id_variante": "var_026_2",
+        "color": "#F4A460",
+        "color_nombre": "Sandy Brown",
+        "precio": 32.99,
+        "precio_descuento": null,
+        "stock": 8,
+        "imagenes": [
+          "https://images.unsplash.com/photo-1631214524020-7e18db9a8f92?w=600&h=600&fit=crop&hue=20",
+          "https://images.unsplash.com/photo-1616683693504-3ea7e9ad6fec?w=600&h=600&fit=crop&hue=20",
+          "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=600&h=600&fit=crop&hue=20",
+          "https://images.unsplash.com/photo-1608248597279-f99d160bfcbc?w=600&h=600&fit=crop&hue=20",
+          "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=600&h=600&fit=crop&hue=20"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "prod_027",
+    "nombre": "Set Brochas Premium",
+    "descripcion": "Set de 12 brochas profesionales. Pinceles de alta calidad.",
+    "categoria": "Accesorios",
+    "variantes": [
+      {
+        "id_variante": "var_027_1",
+        "color": "#2F4F4F",
+        "color_nombre": "Charcoal",
+        "precio": 49.99,
+        "precio_descuento": 39.99,
+        "stock": 7,
+        "imagenes": [
+          "https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1571781535014-53bd94aa31d9?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1629198688000-71f23e745b6e?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1586495777744-4413f21062fa?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1625093742435-6fa192b6fb10?w=600&h=600&fit=crop"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "prod_028",
+    "nombre": "Labial Líquido Mate",
+    "descripcion": "Labial líquido de acabado mate ultra ligero. Color intenso de larga duración.",
+    "categoria": "Labios",
+    "variantes": [
+      {
+        "id_variante": "var_028_1",
+        "color": "#800000",
+        "color_nombre": "Maroon",
+        "precio": 21.99,
+        "precio_descuento": null,
+        "stock": 14,
+        "imagenes": [
+          "https://images.unsplash.com/photo-1586495777744-4413f21062fa?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1625093742435-6fa192b6fb10?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1571781535014-53bd94aa31d9?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1629198688000-71f23e745b6e?w=600&h=600&fit=crop"
+        ]
+      },
+      {
+        "id_variante": "var_028_2",
+        "color": "#8B0000",
+        "color_nombre": "Dark Red",
+        "precio": 21.99,
+        "precio_descuento": 17.99,
+        "stock": 16,
+        "imagenes": [
+          "https://images.unsplash.com/photo-1586495777744-4413f21062fa?w=600&h=600&fit=crop&hue=-10",
+          "https://images.unsplash.com/photo-1625093742435-6fa192b6fb10?w=600&h=600&fit=crop&hue=-10",
+          "https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=600&h=600&fit=crop&hue=-10",
+          "https://images.unsplash.com/photo-1571781535014-53bd94aa31d9?w=600&h=600&fit=crop&hue=-10",
+          "https://images.unsplash.com/photo-1629198688000-71f23e745b6e?w=600&h=600&fit=crop&hue=-10"
+        ]
+      },
+      {
+        "id_variante": "var_028_3",
+        "color": "#A52A2A",
+        "color_nombre": "Brown",
+        "precio": 21.99,
+        "precio_descuento": null,
+        "stock": 10,
+        "imagenes": [
+          "https://images.unsplash.com/photo-1586495777744-4413f21062fa?w=600&h=600&fit=crop&hue=20",
+          "https://images.unsplash.com/photo-1625093742435-6fa192b6fb10?w=600&h=600&fit=crop&hue=20",
+          "https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=600&h=600&fit=crop&hue=20",
+          "https://images.unsplash.com/photo-1571781535014-53bd94aa31d9?w=600&h=600&fit=crop&hue=20",
+          "https://images.unsplash.com/photo-1629198688000-71f23e745b6e?w=600&h=600&fit=crop&hue=20"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "prod_029",
+    "nombre": "Esmalte Gel Cat Eye",
+    "descripcion": "Esmalte efecto cat eye magnético. Look sofisticado y elegante.",
+    "categoria": "Uñas",
+    "variantes": [
+      {
+        "id_variante": "var_029_1",
+        "color": "#191970",
+        "color_nombre": "Midnight Blue",
+        "precio": 16.99,
+        "precio_descuento": 13.99,
+        "stock": 12,
+        "imagenes": [
+          "https://images.unsplash.com/photo-1604654894610-df63bc536371?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1632345031635-0b23c0225561?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1604654894610-df63bc536371?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?w=600&h=600&fit=crop"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "prod_030",
+    "nombre": "Contorno de Ojos",
+    "descripcion": "Contorno de ojos con cafeína y péptidos. Reduce ojeras y bolsas.",
+    "categoria": "Rostro",
+    "variantes": [
+      {
+        "id_variante": "var_030_1",
+        "color": "#FFE4E1",
+        "color_nombre": "Light Tone",
+        "precio": 34.99,
+        "precio_descuento": null,
+        "stock": 8,
+        "imagenes": [
+          "https://images.unsplash.com/photo-1631214524020-7e18db9a8f92?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1616683693504-3ea7e9ad6fec?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1608248597279-f99d160bfcbc?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=600&h=600&fit=crop"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "prod_031",
+    "nombre": "Paleta Cejas Completa",
+    "descripcion": "Paleta de cejas con polvo, cera y gel. Cejas perfectamente definidas.",
+    "categoria": "Ojos",
+    "variantes": [
+      {
+        "id_variante": "var_031_1",
+        "color": "#654321",
+        "color_nombre": "Dark Brown",
+        "precio": 27.99,
+        "precio_descuento": 22.99,
+        "stock": 11,
+        "imagenes": [
+          "https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1599733589046-033e2d247f47?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1560891958-68bb1b0e49f6?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1522337660859-02fbefca4702?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1596704017254-9b121068fb31?w=600&h=600&fit=crop"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "prod_032",
+    "nombre": "Esmalte Gel Transparente",
+    "descripcion": "Esmalte gel transparente de Finish. Base y top coat en uno.",
+    "categoria": "Uñas",
+    "variantes": [
+      {
+        "id_variante": "var_032_1",
+        "color": "#F0F8FF",
+        "color_nombre": "Alice Blue",
+        "precio": 9.99,
+        "precio_descuento": null,
+        "stock": 45,
+        "imagenes": [
+          "https://images.unsplash.com/photo-1604654894610-df63bc536371?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1632345031635-0b23c0225561?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1604654894610-df63bc536371?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?w=600&h=600&fit=crop"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "prod_033",
+    "nombre": "Mascarilla Facial",
+    "descripcion": "Mascarilla facial de tela hidratantes. Piel luminosa al instante.",
+    "categoria": "Skincare",
+    "variantes": [
+      {
+        "id_variante": "var_033_1",
+        "color": "#E6E6FA",
+        "color_nombre": "Lavender",
+        "precio": 8.99,
+        "precio_descuento": 6.99,
+        "stock": 50,
+        "imagenes": [
+          "https://images.unsplash.com/photo-1631214524020-7e18db9a8f92?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1616683693504-3ea7e9ad6fec?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1608248597279-f99d160bfcbc?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=600&h=600&fit=crop"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "prod_034",
+    "nombre": "Pestañas Postizas Natur",
+    "descripcion": "Pestañas postizas de look natural. Comodas y reutilizables.",
+    "categoria": "Ojos",
+    "variantes": [
+      {
+        "id_variante": "var_034_1",
+        "color": "#000000",
+        "color_nombre": "Natural Black",
+        "precio": 15.99,
+        "precio_descuento": null,
+        "stock": 25,
+        "imagenes": [
+          "https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1599733589046-033e2d247f47?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1560891958-68bb1b0e49f6?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1522337660859-02fbefca4702?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1596704017254-9b121068fb31?w=600&h=600&fit=crop"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "prod_035",
+    "nombre": "Serum Vitaminas",
+    "descripcion": "Serum multivitamínico para el rostro. Antioxidantes y nutrición.",
+    "categoria": "Skincare",
+    "variantes": [
+      {
+        "id_variante": "var_035_1",
+        "color": "#FFF8DC",
+        "color_nombre": "Cornsilk",
+        "precio": 38.99,
+        "precio_descuento": 32.99,
+        "stock": 6,
+        "imagenes": [
+          "https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1571781535014-53bd94aa31d9?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1629198688000-71f23e745b6e?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1586495777744-4413f21062fa?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1625093742435-6fa192b6fb10?w=600&h=600&fit=crop"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "prod_036",
+    "nombre": "Esmalte Gel Cromado",
+    "descripcion": "Esmalte efecto espejo cromado. Acabado metálico de tendencia.",
+    "categoria": "Uñas",
+    "variantes": [
+      {
+        "id_variante": "var_036_1",
+        "color": "#C0C0C0",
+        "color_nombre": "Silver",
+        "precio": 17.99,
+        "precio_descuento": 14.99,
+        "stock": 16,
+        "imagenes": [
+          "https://images.unsplash.com/photo-1604654894610-df63bc536371?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1632345031635-0b23c0225561?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1604654894610-df63bc536371?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?w=600&h=600&fit=crop"
+        ]
+      },
+      {
+        "id_variante": "var_036_2",
+        "color": "#B8860B",
+        "color_nombre": "Dark Goldenrod",
+        "precio": 17.99,
+        "precio_descuento": null,
+        "stock": 12,
+        "imagenes": [
+          "https://images.unsplash.com/photo-1604654894610-df63bc536371?w=600&h=600&fit=crop&hue=30",
+          "https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?w=600&h=600&fit=crop&hue=30",
+          "https://images.unsplash.com/photo-1632345031635-0b23c0225561?w=600&h=600&fit=crop&hue=30",
+          "https://images.unsplash.com/photo-1604654894610-df63bc536371?w=600&h=600&fit=crop&hue=30",
+          "https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?w=600&h=600&fit=crop&hue=30"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "prod_037",
+    "nombre": "Gel de Cejas",
+    "descripcion": "Gel de cejas transparentefija y peina. Look natural y duradero.",
+    "categoria": "Ojos",
+    "variantes": [
+      {
+        "id_variante": "var_037_1",
+        "color": "#D3D3D3",
+        "color_nombre": "Clear",
+        "precio": 10.99,
+        "precio_descuento": null,
+        "stock": 30,
+        "imagenes": [
+          "https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1599733589046-033e2d247f47?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1560891958-68bb1b0e49f6?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1522337660859-02fbefca4702?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1596704017254-9b121068fb31?w=600&h=600&fit=crop"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "prod_038",
+    "nombre": "Agua Micelar",
+    "descripcion": "Agua micelar 3 en 1. Limpia, desmaquilla e hidrata.",
+    "categoria": "Skincare",
+    "variantes": [
+      {
+        "id_variante": "var_038_1",
+        "color": "#E0FFFF",
+        "color_nombre": "Light Blue",
+        "precio": 18.99,
+        "precio_descuento": 15.99,
+        "stock": 20,
+        "imagenes": [
+          "https://images.unsplash.com/photo-1631214524020-7e18db9a8f92?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1616683693504-3ea7e9ad6fec?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1608248597279-f99d160bfcbc?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=600&h=600&fit=crop"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "prod_039",
+    "nombre": "Lapiz Labial",
+    "descripcion": "Lápiz labial de larga duración. Precisión y color intenso.",
+    "categoria": "Labios",
+    "variantes": [
+      {
+        "id_variante": "var_039_1",
+        "color": "#A0522D",
+        "color_nombre": "Sienna",
+        "precio": 13.99,
+        "precio_descuento": null,
+        "stock": 22,
+        "imagenes": [
+          "https://images.unsplash.com/photo-1586495777744-4413f21062fa?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1625093742435-6fa192b6fb10?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1571781535014-53bd94aa31d9?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1629198688000-71f23e745b6e?w=600&h=600&fit=crop"
+        ]
+      },
+      {
+        "id_variante": "var_039_2",
+        "color": "#CD853F",
+        "color_nombre": "Peru",
+        "precio": 13.99,
+        "precio_descuento": 10.99,
+        "stock": 18,
+        "imagenes": [
+          "https://images.unsplash.com/photo-1586495777744-4413f21062fa?w=600&h=600&fit=crop&hue=20",
+          "https://images.unsplash.com/photo-1625093742435-6fa192b6fb10?w=600&h=600&fit=crop&hue=20",
+          "https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=600&h=600&fit=crop&hue=20",
+          "https://images.unsplash.com/photo-1571781535014-53bd94aa31d9?w=600&h=600&fit=crop&hue=20",
+          "https://images.unsplash.com/photo-1629198688000-71f23e745b6e?w=600&h=600&fit=crop&hue=20"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "prod_040",
+    "nombre": "Set Esmaltes Colección",
+    "descripcion": "Set de 6 esmaltes gel de colección exclusiva. Colores coordinados.",
+    "categoria": "Uñas",
+    "variantes": [
+      {
+        "id_variante": "var_040_1",
+        "color": "#FF6347",
+        "color_nombre": "Collection Mix",
+        "precio": 39.99,
+        "precio_descuento": 34.99,
+        "stock": 5,
+        "imagenes": [
+          "https://images.unsplash.com/photo-1604654894610-df63bc536371?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1632345031635-0b23c0225561?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1604654894610-df63bc536371?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?w=600&h=600&fit=crop"
+        ]
+      }
+    ]
+  }
+]

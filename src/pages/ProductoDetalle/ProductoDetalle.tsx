@@ -1,35 +1,76 @@
-import { useParams, Link, useNavigate } from 'react-router-dom';
-import { useState } from 'react';
-import { useCarrito } from '../../context/CarritoContext';
+import { useState, useEffect } from 'react';
+import { useParams, Link } from 'react-router-dom';
+import { getProductoById, getAllProducts } from '../../data/products';
+import type { Producto, Variante } from '../../data/products';
+import ProductCard from '../../components/ProductCard/ProductCard';
 import './ProductoDetalle.css';
-
-const productos = [
-  { id: 1, nombre: 'Labial Mate Intenso', precio: 24.99, imagen: 'https://images.unsplash.com/photo-1586495777744-4413f21062fa?w=400', categoria: 'labiales', marca: 'Glamour', descripcion: 'Labial de acabado mate con fórmula de larga duración. Textura cremosa que se seca suavemente ofreciendo un color vibrante que dura todo el día.', colores: ['#C41E3A', '#FF69B4', '#8B4513', '#FF0000'] },
-  { id: 2, nombre: 'Paleta Sombras 12 Tonos', precio: 49.99, imagen: 'https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=400', categoria: 'sombras', marca: 'Beauty', descripcion: 'Paleta profesional con 12 tonos perfectamente coordinados. Desde neutros hasta colores vibrantes para crear looks increíbles.', colores: ['#FFD700', '#FF69B4', '#8B4513', '#4169E1'] },
-  { id: 3, nombre: 'Delineador Líquido', precio: 18.99, imagen: 'https://images.unsplash.com/photo-1631214524020-7e18db9a8f92?w=400', categoria: 'delineadores', marca: 'Luxe', descripcion: 'Delineador líquido de alta precisión con punta ultrafina. Resistente al agua y de secado rápido para un acabado perfecto.', colores: ['#000000', '#4B0082', '#000080'] },
-  { id: 4, nombre: 'Esmalte Gel Brillante', precio: 14.99, imagen: 'https://images.unsplash.com/photo-1604654894610-df63bc536371?w=400', categoria: 'esmaltes', marca: 'Nails', descripcion: 'Esmalte efecto gel de larga duración. Brillo intenso que dura hasta 14 días sin astillarse.', colores: ['#FF69B4', '#DC143C', '#FFD700', '#8B4513'] },
-];
 
 const ProductoDetalle = () => {
   const { id } = useParams<{ id: string }>();
-  const navigate = useNavigate();
-  const { agregarProducto } = useCarrito();
-  const [cantidad, setCantidad] = useState(1);
-  const producto = productos.find(p => p.id === Number(id));
+  const [cargando, setCargando] = useState(true);
+  const [producto, setProducto] = useState<Producto | null>(null);
+  const [varianteActiva, setVarianteActiva] = useState<Variante | null>(null);
+  const [imagenPrincipal, setImagenPrincipal] = useState(0);
+  const [productosRelacionados, setProductosRelacionados] = useState<Producto[]>([]);
 
-  if (!producto) {
+  useEffect(() => {
+    setCargando(true);
+    if (id) {
+      const prod = getProductoById(id);
+      if (prod && prod.variantes.length > 0) {
+        setProducto(prod);
+        setVarianteActiva(prod.variantes[0]);
+        setImagenPrincipal(0);
+        
+        // Fetch related products
+        const todos = getAllProducts();
+        const relacionados = todos.filter(p => p.categoria.toLowerCase() === prod.categoria.toLowerCase() && p.id !== prod.id).slice(0, 10);
+        setProductosRelacionados(relacionados);
+      } else {
+        setProducto(null);
+        setVarianteActiva(null);
+      }
+    }
+    setCargando(false);
+  }, [id]);
+
+  if (cargando) {
     return (
-      <div className="producto-no-encontrado">
-        <h2>Producto no encontrado</h2>
-        <Link to="/catalogo" className="btn-primary">Volver al catálogo</Link>
+      <div className="producto-loading">
+        <div className="producto-loading-content">
+          <div className="producto-spinner"></div>
+          <p>Cargando...</p>
+        </div>
       </div>
     );
   }
 
+  if (!producto || !varianteActiva) {
+    return (
+      <div className="producto-not-found">
+        <div className="producto-not-found-content">
+          <h2>Producto no encontrado</h2>
+          <p>ID: {id}</p>
+          <Link to="/catalogo" className="btn-primary">Volver al catálogo</Link>
+        </div>
+      </div>
+    );
+  }
+
+  const manejarCambioVariante = (variante: Variante) => {
+    setVarianteActiva(variante);
+    setImagenPrincipal(0);
+  };
+
+  const precioFinal = varianteActiva.precio_descuento !== null 
+    ? varianteActiva.precio_descuento 
+    : varianteActiva.precio;
+  const tieneDescuento = varianteActiva.precio_descuento !== null;
+
   return (
     <div className="producto-detalle">
-      <div className="container">
-        <div className="breadcrumbs">
+      <div className="producto-detalle-container">
+        <nav className="producto-breadcrumbs">
           <Link to="/">Inicio</Link>
           <span>/</span>
           <Link to="/catalogo">Catálogo</Link>
@@ -37,66 +78,145 @@ const ProductoDetalle = () => {
           <Link to={`/catalogo/${producto.categoria}`}>{producto.categoria}</Link>
           <span>/</span>
           <span>{producto.nombre}</span>
-        </div>
+        </nav>
 
-        <div className="producto-content">
-          <div className="producto-imagen">
-            <img src={producto.imagen} alt={producto.nombre} />
-          </div>
+        <div className="producto-card">
+          <div className="producto-grid">
+            <div className="producto-imagenes">
+              <div className="producto-imagen-principal">
+                <img
+                  src={varianteActiva.imagenes[imagenPrincipal]}
+                  alt={`${producto.nombre} - ${varianteActiva.color_nombre}`}
+                />
+                {tieneDescuento && (
+                  <span className="producto-oferta-badge">OFERTA</span>
+                )}
+              </div>
 
-          <div className="producto-info">
-            <span className="producto-marca">{producto.marca}</span>
-            <h1 className="producto-nombre">{producto.nombre}</h1>
-            <p className="producto-precio">${producto.precio.toFixed(2)}</p>
-            <p className="producto-descripcion">{producto.descripcion}</p>
-
-            <div className="producto-colores">
-              <h4>Color</h4>
-              <div className="colores-opciones">
-                {producto.colores.map((color, index) => (
-                  <button 
-                    key={index} 
-                    className="color-swatch" 
-                    style={{ backgroundColor: color }}
-                    title={color}
-                  />
+              <div className="producto-miniaturas">
+                {varianteActiva.imagenes.map((img, idx) => (
+                  <button
+                    key={idx}
+                    onClick={() => setImagenPrincipal(idx)}
+                    className={`producto-miniatura ${imagenPrincipal === idx ? 'active' : ''}`}
+                  >
+                    <img src={img} alt={`Vista ${idx + 1}`} />
+                  </button>
                 ))}
               </div>
             </div>
 
-            <div className="producto-cantidad">
-              <h4>Cantidad</h4>
-              <div className="cantidad-selector">
-                <button onClick={() => setCantidad(Math.max(1, cantidad - 1))}>-</button>
-                <span>{cantidad}</span>
-                <button onClick={() => setCantidad(cantidad + 1)}>+</button>
+            <div className="producto-detalles">
+              <div className="producto-categoria">
+                <span className="producto-categoria-badge">
+                  {producto.categoria}
+                </span>
               </div>
-            </div>
 
-            <div className="producto-acciones">
-              <button 
-                className="btn-primary btn-agregar" 
-                onClick={() => agregarProducto({ id: producto.id, nombre: producto.nombre, precio: producto.precio, imagen: producto.imagen }, cantidad)}
-              >
-                Agregar al Carrito
-              </button>
-              <button 
-                className="btn-comprar btn-primary"
-                onClick={() => {
-                  agregarProducto({ id: producto.id, nombre: producto.nombre, precio: producto.precio, imagen: producto.imagen }, cantidad);
-                  navigate('/checkout');
-                }}
-              >
-                Comprar Ahora
-              </button>
-              <button className="btn-favorito">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
-                </svg>
-              </button>
+              <h1 className="producto-titulo">
+                {producto.nombre}
+              </h1>
+
+              <div className="producto-precio">
+                <span className="producto-precio-final">
+                  ${precioFinal.toFixed(2)}
+                </span>
+                {tieneDescuento && (
+                  <>
+                    <span className="producto-precio-original">
+                      ${varianteActiva.precio.toFixed(2)}
+                    </span>
+                    <span className="producto-descuento">
+                      -{Math.round((1 - varianteActiva.precio_descuento! / varianteActiva.precio) * 100)}%
+                    </span>
+                  </>
+                )}
+              </div>
+
+              <p className="producto-descripcion">
+                {producto.descripcion}
+              </p>
+
+              <div className="producto-color">
+                <h3>Color: <span className="producto-color-seleccionado">{varianteActiva.color_nombre}</span></h3>
+                <div className="producto-colores">
+                  {producto.variantes.map((variante) => {
+                    const isActive = varianteActiva.id_variante === variante.id_variante;
+                    return (
+                    <button
+                      key={variante.id_variante}
+                      onClick={() => manejarCambioVariante(variante)}
+                      className={`producto-color-btn ${isActive ? 'active' : ''}`}
+                      title={variante.color_nombre}
+                    >
+                      <div 
+                        className="producto-color-circulo"
+                        style={{ backgroundColor: variante.color }}
+                      />
+                      {variante.stock === 0 && (
+                        <div className="producto-color-agotado">
+                          <span>AGOTADO</span>
+                        </div>
+                      )}
+                    </button>
+                    );
+                  })}
+                </div>
+                <p className="producto-stock">
+                  {varianteActiva.stock > 0 
+                    ? `${varianteActiva.stock} unidades disponibles` 
+                    : 'Producto agotado'}
+                </p>
+              </div>
+
+              <div className="producto-acciones">
+                {producto.urlShein && (
+                  <a
+                    href={producto.urlShein}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="producto-btn-comprar"
+                    style={{ backgroundColor: '#222', marginBottom: '10px', textDecoration: 'none', display: 'flex', justifyContent: 'center', alignItems: 'center' }}
+                  >
+                    🚀 Comprar en Shein
+                  </a>
+                )}
+                
+                {producto.urlTiktok && (
+                  <a
+                    href={producto.urlTiktok}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="producto-btn-comprar"
+                    style={{ backgroundColor: '#00f2fe', color: '#000', textDecoration: 'none', display: 'flex', justifyContent: 'center', alignItems: 'center' }}
+                  >
+                    🎵 Comprar en TikTok Shop
+                  </a>
+                )}
+                
+                {(!producto.urlShein && !producto.urlTiktok) && (
+                   <div style={{ padding: '15px', background: '#f8f9fa', borderRadius: '8px', textAlign: 'center', color: '#666' }}>
+                     Producto disponible próximamente en nuestras tiendas oficiales.
+                   </div>
+                )}
+              </div>
             </div>
           </div>
         </div>
+
+        {/* Productos Relacionados */}
+        {productosRelacionados.length > 0 && (
+          <div className="productos-relacionados" style={{ marginTop: '4rem' }}>
+            <h2 style={{ textAlign: 'center', marginBottom: '2rem', fontSize: '2rem' }}>También te podría gustar</h2>
+            <div className="relacionados-carousel" style={{ display: 'flex', gap: '20px', overflowX: 'auto', paddingBottom: '20px' }}>
+              {productosRelacionados.map(prod => (
+                <div key={prod.id} style={{ minWidth: '200px', flex: '0 0 auto', transform: 'scale(0.9)', transformOrigin: 'top center' }}>
+                  <ProductCard producto={prod} />
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

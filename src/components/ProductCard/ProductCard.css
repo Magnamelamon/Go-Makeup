@@ -86,6 +86,19 @@
   font-size: 1.25rem;
   font-weight: 700;
   color: var(--color-rosa-vibrante);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.product-card-precio .precio-original {
+  font-size: 0.9rem;
+  color: #999;
+  text-decoration: line-through;
+}
+
+.product-card-precio .precio-descuento {
+  color: var(--color-rosa-vibrante);
 }
 
 .product-card-btn {

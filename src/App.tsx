@@ -1,38 +1,49 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Navbar from './components/Navbar/Navbar';
 import Footer from './components/Footer/Footer';
 import Home from './pages/Home/Home';
 import Catalogo from './pages/Catalogo/Catalogo';
 import ProductoDetalle from './pages/ProductoDetalle/ProductoDetalle';
-import Carrito from './pages/Carrito/Carrito';
-import Checkout from './pages/Checkout/Checkout';
+import QuienesSomos from './pages/QuienesSomos/QuienesSomos';
 import PerfilUsuario from './pages/PerfilUsuario/PerfilUsuario';
-import PerfilAdmin from './pages/PerfilAdmin/PerfilAdmin';
 import Login from './pages/Login/Login';
+import AdminLogin from './pages/AdminLogin/AdminLogin';
+import AdminLayout from './components/AdminLayout/AdminLayout';
+import AdminProductos from './pages/AdminProductos/AdminProductos';
+import AdminPedidos from './pages/AdminPedidos/AdminPedidos';
+import AdminUsuarios from './pages/AdminUsuarios/AdminUsuarios';
+import AdminInteracciones from './pages/AdminInteracciones/AdminInteracciones';
 import { AuthProvider } from './context/AuthContext';
-import { CarritoProvider } from './context/CarritoContext';
 import './styles/global.css';
+import './index.css';
 
 function App() {
   return (
     <AuthProvider>
-      <CarritoProvider>
-        <BrowserRouter>
-          <Navbar />
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/catalogo" element={<Catalogo />} />
-            <Route path="/catalogo/:categoria" element={<Catalogo />} />
-            <Route path="/producto/:id" element={<ProductoDetalle />} />
-            <Route path="/carrito" element={<Carrito />} />
-            <Route path="/checkout" element={<Checkout />} />
-            <Route path="/perfil" element={<PerfilUsuario />} />
-            <Route path="/admin" element={<PerfilAdmin />} />
-            <Route path="/login" element={<Login />} />
-          </Routes>
-          <Footer />
-        </BrowserRouter>
-      </CarritoProvider>
+      <BrowserRouter>
+        <Routes>
+          {/* Public Routes with Navbar and Footer */}
+          <Route path="/" element={<><Navbar /><Home /><Footer /></>} />
+          <Route path="/catalogo" element={<><Navbar /><Catalogo /><Footer /></>} />
+          <Route path="/catalogo/:categoria" element={<><Navbar /><Catalogo /><Footer /></>} />
+          <Route path="/producto/:id" element={<><Navbar /><ProductoDetalle /><Footer /></>} />
+          <Route path="/perfil" element={<><Navbar /><PerfilUsuario /><Footer /></>} />
+          <Route path="/login" element={<><Navbar /><Login /><Footer /></>} />
+          <Route path="/quienes-somos" element={<><Navbar /><QuienesSomos /><Footer /></>} />
+          
+          {/* Admin Login Route without public Navbar */}
+          <Route path="/admin-login" element={<AdminLogin />} />
+
+          {/* Admin Dashboard Routes wrapped in AdminLayout */}
+          <Route path="/admin" element={<AdminLayout />}>
+            <Route index element={<Navigate to="/admin/productos" replace />} />
+            <Route path="productos" element={<AdminProductos />} />
+            <Route path="pedidos" element={<AdminPedidos />} />
+            <Route path="usuarios" element={<AdminUsuarios />} />
+            <Route path="interacciones" element={<AdminInteracciones />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
     </AuthProvider>
   );
 }

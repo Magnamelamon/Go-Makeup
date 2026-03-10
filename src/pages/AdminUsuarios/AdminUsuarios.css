@@ -1,0 +1,12 @@
+/* Inherits globally from AdminProductos.css */
+/* Minimal additional specific styles */
+
+.estado-badge.activo {
+  background-color: #dcfce7;
+  color: #166534;
+}
+
+.estado-badge.inactivo {
+  background-color: #f3f4f6;
+  color: #6b7280;
+}

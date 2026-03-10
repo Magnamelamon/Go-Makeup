@@ -1,18 +1,10 @@
 import { useRef } from 'react';
 import ProductCard from '../ProductCard/ProductCard';
+import type { Producto } from '../../data/products';
 import './ProductCarousel.css';
 
-interface Product {
-  id: number;
-  nombre: string;
-  precio: number;
-  imagen: string;
-  categoria: string;
-  marca: string;
-}
-
 interface ProductCarouselProps {
-  productos: Product[];
+  productos: Producto[];
   titulo: string;
 }
 

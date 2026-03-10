@@ -1,0 +1,68 @@
+.quienes-somos {
+  min-height: calc(100vh - 80px); /* Ajuste basado en navbar */
+  background-color: var(--color-background);
+  color: var(--color-text);
+  padding-bottom: 4rem;
+}
+
+.quienes-somos-hero {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  color: white;
+  padding: 4rem 1rem;
+  text-align: center;
+  margin-bottom: 3rem;
+  border-bottom-left-radius: 40px;
+  border-bottom-right-radius: 40px;
+}
+
+.quienes-somos-hero h1 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.quienes-somos-hero p {
+  font-size: 1.25rem;
+  opacity: 0.9;
+}
+
+.quienes-somos-content {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.historia, .mision-vision {
+  padding: 0 1rem;
+}
+
+.historia h2, .mision-vision h3 {
+  font-family: 'Outfit', sans-serif;
+  color: var(--color-primary);
+  margin-bottom: 1.5rem;
+}
+
+.historia p, .mision-vision p {
+  line-height: 1.8;
+  color: var(--color-text);
+  font-size: 1.1rem;
+}
+
+.mision-vision {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.mision-vision .card {
+  background: white;
+  padding: 2.5rem;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(255, 43, 115, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.mision-vision .card:hover {
+  transform: translateY(-5px);
+}

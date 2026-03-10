@@ -1,0 +1,151 @@
+.admin-unauthorized {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #111827;
+  color: white;
+  gap: 1rem;
+}
+
+.admin-layout {
+  display: flex;
+  height: 100vh;
+  background-color: #f3f4f6;
+  font-family: 'Outfit', 'Inter', sans-serif;
+}
+
+.admin-sidebar {
+  width: 260px;
+  background-color: #1f2937;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 4px 0 10px rgba(0,0,0,0.1);
+  z-index: 10;
+}
+
+.admin-sidebar-header {
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-bottom: 1px solid #374151;
+}
+
+.admin-sidebar-header h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #f9fafb;
+}
+
+.admin-sidebar-nav {
+  flex: 1;
+  padding: 24px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  border-radius: 8px;
+  color: #d1d5db;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.nav-item:hover {
+  background-color: #374151;
+  color: white;
+}
+
+.nav-item.active {
+  background-color: var(--color-rosa-vibrante);
+  color: white;
+}
+
+.admin-sidebar-footer {
+  padding: 24px;
+  border-top: 1px solid #374151;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.admin-user-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.admin-user-name {
+  font-weight: 600;
+  color: white;
+}
+
+.admin-user-role {
+  font-size: 0.8rem;
+  color: #9ca3af;
+}
+
+.btn-logout {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px;
+  border-radius: 8px;
+  background-color: transparent;
+  color: #ef4444;
+  border: 1px solid #ef4444;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-logout:hover {
+  background-color: #ef4444;
+  color: white;
+}
+
+.admin-main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.admin-topbar {
+  height: 72px;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  padding: 0 40px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  z-index: 5;
+}
+
+.topbar-search input {
+  padding: 10px 16px;
+  border-radius: 20px;
+  border: 1px solid #e5e7eb;
+  width: 300px;
+  background-color: #f9fafb;
+}
+
+.topbar-search input:focus {
+  outline: none;
+  border-color: var(--color-rosa-vibrante);
+}
+
+.admin-content-area {
+  flex: 1;
+  padding: 40px;
+  overflow-y: auto;
+  background-color: #f3f4f6;
+}

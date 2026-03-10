@@ -2,6 +2,14 @@
   padding-top: 80px;
 }
 
+.titulo-seccion {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--color-texto);
+  text-align: center;
+  margin-bottom: 40px;
+}
+
 .categorias-section {
   padding: 60px 0;
   background-color: var(--color-blanco);
@@ -16,20 +24,27 @@
 .categoria-card {
   position: relative;
   aspect-ratio: 1;
-  border-radius: var(--borde-radio);
+  border-radius: var(--borde-radio-lg);
   overflow: hidden;
   display: block;
+  box-shadow: var(--sombra);
+  transition: var(--transicion);
 }
 
 .categoria-card img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: var(--transicion);
+  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.categoria-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--sombra-hover);
 }
 
 .categoria-card:hover img {
-  transform: scale(1.1);
+  transform: scale(1.08);
 }
 
 .categoria-overlay {
@@ -38,17 +53,25 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(to top, rgba(240, 98, 146, 0.8), transparent);
+  background: linear-gradient(to top, rgba(255, 43, 115, 0.85), transparent 60%);
   display: flex;
   align-items: flex-end;
   justify-content: center;
-  padding-bottom: 24px;
+  padding-bottom: 30px;
+  opacity: 0.9;
+  transition: var(--transicion);
+}
+
+.categoria-card:hover .categoria-overlay {
+  background: linear-gradient(to top, rgba(227, 28, 96, 0.95), transparent 70%);
+  padding-bottom: 36px;
 }
 
 .categoria-overlay h3 {
   color: var(--color-blanco);
-  font-size: 1.25rem;
-  font-weight: 600;
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 1px;
 }
 
 .productos-section {
@@ -60,16 +83,17 @@
   align-items: center;
   background: linear-gradient(135deg, var(--color-rosa-vibrante) 0%, #e5517a 100%);
   overflow: hidden;
+  max-height: 400px;
 }
 
 .banner-content {
   flex: 1;
-  padding: 60px;
+  padding: 40px;
   color: var(--color-blanco);
 }
 
 .banner-subtitulo {
-  font-size: 1rem;
+  font-size: 0.9rem;
   text-transform: uppercase;
   letter-spacing: 2px;
   color: var(--color-dorado);
@@ -77,25 +101,30 @@
 }
 
 .banner-titulo {
-  font-size: 3rem;
+  font-size: 2.2rem;
   font-weight: 800;
-  margin: 16px 0;
+  margin: 12px 0;
 }
 
 .banner-descripcion {
-  font-size: 1.1rem;
+  font-size: 1rem;
   opacity: 0.9;
-  margin-bottom: 24px;
+  margin-bottom: 20px;
 }
 
 .banner-imagen {
   flex: 1;
-  padding: 40px;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .banner-imagen img {
-  max-width: 100%;
+  max-height: 350px;
+  width: auto;
   border-radius: var(--borde-radio);
+  object-fit: cover;
 }
 
 @media (max-width: 1024px) {
@@ -106,10 +135,11 @@
   .banner-promo {
     flex-direction: column;
     text-align: center;
+    max-height: none;
   }
 
   .banner-content {
-    padding: 40px 20px;
+    padding: 30px 20px;
   }
 }
 
@@ -119,6 +149,6 @@
   }
 
   .banner-titulo {
-    font-size: 2rem;
+    font-size: 1.8rem;
   }
 }

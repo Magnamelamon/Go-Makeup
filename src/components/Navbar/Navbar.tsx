@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
-import { useCarrito } from '../../context/CarritoContext';
 import './Navbar.css';
 
 const Navbar = () => {
@@ -9,7 +8,6 @@ const Navbar = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const { user, logout, isAuthenticated } = useAuth();
-  const { totalItems } = useCarrito();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -38,21 +36,14 @@ const Navbar = () => {
         <ul className="navbar-menu">
           <li><Link to="/">Inicio</Link></li>
           <li><Link to="/catalogo">Catálogo</Link></li>
-          <li><Link to="/catalogo/labiales">Labiales</Link></li>
-          <li><Link to="/catalogo/sombras">Sombras</Link></li>
-          <li><Link to="/catalogo/delineadores">Delineadores</Link></li>
-          <li><Link to="/catalogo/esmaltes">Esmaltes</Link></li>
+          <li><Link to="/catalogo/labios">Labios</Link></li>
+          <li><Link to="/catalogo/ojos">Ojos</Link></li>
+          <li><Link to="/catalogo/rostro">Rostro</Link></li>
+          <li><Link to="/quienes-somos">Quiénes Somos</Link></li>
         </ul>
 
         <div className="navbar-actions">
-          <Link to="/carrito" className="navbar-icon cart-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
-              <line x1="3" y1="6" x2="21" y2="6"></line>
-              <path d="M16 10a4 4 0 0 1-8 0"></path>
-            </svg>
-            {totalItems > 0 && <span className="cart-count">{totalItems}</span>}
-          </Link>
+          {/* Botón de bolsa oculto temporalmente */}
           
           {isAuthenticated ? (
             <>

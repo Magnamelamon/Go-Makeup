@@ -1,28 +1,40 @@
 :root {
-  --color-rosa-vibrante: #F06292;
-  --color-nude-rosado-1: #F6E6EA;
-  --color-nude-rosado-2: #F3DDE2;
-  --color-dorado: #F4C542;
-  --color-texto: #333333;
-  --color-blanco: #ffffff;
-  --color-negro: #1a1a1a;
-  --sombra: 0 4px 12px rgba(0, 0, 0, 0.1);
-  --sombra-hover: 0 8px 24px rgba(0, 0, 0, 0.15);
-  --borde-radio: 12px;
-  --transicion: 0.3s ease;
+  /* Paleta cromática premium y moderna */
+  --color-rosa-vibrante: #FF2B73;
+  --color-rosa-hover: #E31C60;
+  --color-nude-rosado-1: #FFF5F7;
+  --color-nude-rosado-2: #FFE4EC;
+  --color-dorado: #D4AF37;
+  --color-dorado-hover: #C59B2E;
+  --color-texto: #1F2937;
+  --color-texto-claro: #6B7280;
+  --color-blanco: #FFFFFF;
+  --color-negro: #0A0A0A;
+  
+  /* Sombras y profundidad */
+  --sombra: 0 4px 12px rgba(255, 43, 115, 0.08);
+  --sombra-hover: 0 12px 24px rgba(255, 43, 115, 0.15);
+  --sombra-fuerte: 0 20px 40px rgba(0, 0, 0, 0.08);
+  
+  /* Radios y transiciones suaves */
+  --borde-radio: 16px;
+  --borde-radio-lg: 24px;
+  --transicion: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  --transicion-rapida: all 0.2s ease;
 }
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Outfit', 'Inter', system-ui, -apple-system, sans-serif;
 }
 
 body {
-  background-color: var(--color-nude-rosado-1);
+  background: linear-gradient(135deg, var(--color-nude-rosado-1) 0%, #FFFFFF 100%);
   color: var(--color-texto);
   line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
 }
 
 a {
