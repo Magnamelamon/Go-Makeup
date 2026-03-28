@@ -1,8 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { getProductoById, getAllProducts } from '../../data/products';
 import type { Producto, Variante } from '../../data/products';
-import ProductCard from '../../components/ProductCard/ProductCard';
+import ProductCarousel from '../../components/ProductCarousel/ProductCarousel';
 import './ProductoDetalle.css';
 
 const ProductoDetalle = () => {
@@ -14,24 +13,37 @@ const ProductoDetalle = () => {
   const [productosRelacionados, setProductosRelacionados] = useState<Producto[]>([]);
 
   useEffect(() => {
-    setCargando(true);
-    if (id) {
-      const prod = getProductoById(id);
-      if (prod && prod.variantes.length > 0) {
-        setProducto(prod);
-        setVarianteActiva(prod.variantes[0]);
-        setImagenPrincipal(0);
+    const fetchProduct = async () => {
+      setCargando(true);
+      try {
+        const res = await fetch(`http://localhost:5000/api/products/${id}`);
+        if (!res.ok) throw new Error('Producto no encontrado');
+        const prod = await res.json();
         
-        // Fetch related products
-        const todos = getAllProducts();
-        const relacionados = todos.filter(p => p.categoria.toLowerCase() === prod.categoria.toLowerCase() && p.id !== prod.id).slice(0, 10);
+        setProducto(prod);
+        if (prod.variantes && prod.variantes.length > 0) {
+          setVarianteActiva(prod.variantes[0]);
+          setImagenPrincipal(0);
+        }
+        
+        // Fetch related products (we fetch all and filter for now, later we can add a specific API route)
+        const resAll = await fetch('http://localhost:5000/api/products');
+        const todos = await resAll.json();
+        const relacionados = todos.filter((p: Producto) => p.categoria && p.categoria.trim().toLowerCase() === prod.categoria.trim().toLowerCase() && p.id !== prod.id).slice(0, 10);
         setProductosRelacionados(relacionados);
-      } else {
+
+      } catch (error) {
+        console.error("Error cargando producto:", error);
         setProducto(null);
         setVarianteActiva(null);
+      } finally {
+        setCargando(false);
       }
+    };
+
+    if (id) {
+      fetchProduct();
     }
-    setCargando(false);
   }, [id]);
 
   if (cargando) {
@@ -62,10 +74,11 @@ const ProductoDetalle = () => {
     setImagenPrincipal(0);
   };
 
-  const precioFinal = varianteActiva.precio_descuento !== null 
-    ? varianteActiva.precio_descuento 
-    : varianteActiva.precio;
-  const tieneDescuento = varianteActiva.precio_descuento !== null;
+  const precioFinal = varianteActiva.precio_descuento != null 
+    ? Number(varianteActiva.precio_descuento) 
+    : Number(varianteActiva.precio);
+  const precioOriginal = Number(varianteActiva.precio);
+  const tieneDescuento = varianteActiva.precio_descuento != null;
 
   return (
     <div className="producto-detalle">
@@ -124,10 +137,10 @@ const ProductoDetalle = () => {
                 {tieneDescuento && (
                   <>
                     <span className="producto-precio-original">
-                      ${varianteActiva.precio.toFixed(2)}
+                      ${precioOriginal.toFixed(2)}
                     </span>
                     <span className="producto-descuento">
-                      -{Math.round((1 - varianteActiva.precio_descuento! / varianteActiva.precio) * 100)}%
+                      -{Math.round((1 - Number(varianteActiva.precio_descuento) / precioOriginal) * 100)}%
                     </span>
                   </>
                 )}
@@ -207,14 +220,10 @@ const ProductoDetalle = () => {
         {/* Productos Relacionados */}
         {productosRelacionados.length > 0 && (
           <div className="productos-relacionados" style={{ marginTop: '4rem' }}>
-            <h2 style={{ textAlign: 'center', marginBottom: '2rem', fontSize: '2rem' }}>También te podría gustar</h2>
-            <div className="relacionados-carousel" style={{ display: 'flex', gap: '20px', overflowX: 'auto', paddingBottom: '20px' }}>
-              {productosRelacionados.map(prod => (
-                <div key={prod.id} style={{ minWidth: '200px', flex: '0 0 auto', transform: 'scale(0.9)', transformOrigin: 'top center' }}>
-                  <ProductCard producto={prod} />
-                </div>
-              ))}
-            </div>
+            <ProductCarousel 
+              productos={productosRelacionados} 
+              titulo="También te podría gustar" 
+            />
           </div>
         )}
       </div>

@@ -10,9 +10,10 @@ const AdminLogin = () => {
   const { login } = useAuth();
   const navigate = useNavigate();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (login(email, password)) {
+    const success = await login(email, password);
+    if (success) {
       navigate('/admin');
     } else {
       setError('Credenciales de administrador incorrectas');
@@ -58,12 +59,7 @@ const AdminLogin = () => {
           <button type="submit" className="btn-admin-login">Acceder al Panel</button>
         </form>
 
-        <div className="login-demo">
-          <p>Solo personal autorizado:</p>
-          <div className="demo-accounts">
-            <div><strong>Admin:</strong> admin@gomakeup.com / admin123</div>
-          </div>
-        </div>
+
 
         <Link to="/" className="back-home">Volver al sitio público</Link>
       </div>

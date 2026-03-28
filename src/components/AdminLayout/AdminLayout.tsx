@@ -1,6 +1,6 @@
 import { Outlet, Link, useLocation } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
-import { LogOut, Package, ShoppingCart, Users, Activity } from 'lucide-react';
+import { LogOut, Package } from 'lucide-react';
 import './AdminLayout.css';
 
 const AdminLayout = () => {
@@ -34,15 +34,6 @@ const AdminLayout = () => {
         <nav className="admin-sidebar-nav">
           <Link to="/admin/productos" className={`nav-item ${isActive('/admin/productos') ? 'active' : ''}`}>
             <Package size={20} /> Productos
-          </Link>
-          <Link to="/admin/pedidos" className={`nav-item ${isActive('/admin/pedidos') ? 'active' : ''}`}>
-            <ShoppingCart size={20} /> Pedidos
-          </Link>
-          <Link to="/admin/usuarios" className={`nav-item ${isActive('/admin/usuarios') ? 'active' : ''}`}>
-            <Users size={20} /> Usuarios
-          </Link>
-          <Link to="/admin/interacciones" className={`nav-item ${isActive('/admin/interacciones') ? 'active' : ''}`}>
-            <Activity size={20} /> Analítica
           </Link>
         </nav>
 

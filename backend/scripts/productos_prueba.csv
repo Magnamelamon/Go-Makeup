@@ -1,0 +1,4 @@
+id,nombre,descripcion,categoria,urlShein,urlTiktok,id_variante,color,color_nombre,precio,precio_descuento,stock,imagenes
+LAB-01,Labial Mate Mágico,Labial líquido de larga duración.,Labiales,https://shein.com/labial,https://tiktok.com/labial,LAB-01-ROJO,#FF0000,Rojo Pasión,150.00,,50,"https://imagen1.com/img.jpg,https://imagen1.com/img2.jpg"
+LAB-01,Labial Mate Mágico,Labial líquido de larga duración.,Labiales,https://shein.com/labial,https://tiktok.com/labial,LAB-01-ROSA,#FFC0CB,Rosa Pastel,150.00,120.00,30,https://imagen2.com/img.jpg
+SOM-01,Paleta de Sombras Noche,Paleta con 12 tonos oscuros y brillantes.,Sombras,,https://tiktok.com/sombras,SOM-01-A,#000000,Multicolor,300.00,,100,

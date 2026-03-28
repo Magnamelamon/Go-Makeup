@@ -1,11 +1,11 @@
 import { createContext, useContext, useState, useEffect, type ReactNode } from 'react';
-import { getAllUsers, saveUser, getUserByEmail, type User } from '../data/users';
+import { saveUser, type User } from '../data/users';
 
 interface AuthContextType {
   user: User | null;
-  login: (email: string, password: string) => boolean;
+  login: (email: string, password: string) => Promise<boolean>;
   logout: () => void;
-  register: (nombre: string, email: string, password: string) => boolean;
+  register: (nombre: string, email: string, password: string) => Promise<boolean>;
   updateCurrentUser: (updates: Partial<User>) => void;
   isAuthenticated: boolean;
 }
@@ -23,34 +23,40 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     }
   }, []);
 
-  const login = (email: string, password: string): boolean => {
-    const usersDB = getAllUsers();
-    const foundUser = usersDB.find(u => u.email === email && u.password === password);
-    if (foundUser) {
-      const { password: _, ...userWithoutPassword } = foundUser;
-      setUser(userWithoutPassword as User);
-      localStorage.setItem('gomakeup_session', JSON.stringify(userWithoutPassword));
-      return true;
+  const login = async (email: string, password: string): Promise<boolean> => {
+    try {
+      const res = await fetch('http://localhost:5000/api/admins/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password })
+      });
+      
+      if (res.ok) {
+        const data = await res.json();
+        const userData: User = {
+          id: data._id,
+          nombre: data.nombre,
+          email: data.email,
+          rol: 'admin',
+          estado: 'activo',
+          fechaRegistro: new Date().toISOString()
+        };
+        setUser(userData);
+        localStorage.setItem('gomakeup_session', JSON.stringify({ ...userData, token: data.token }));
+        return true;
+      }
+      return false;
+    } catch (error) {
+      console.error('Login error', error);
+      return false;
     }
-    return false;
   };
 
-  const register = (nombre: string, email: string, password: string): boolean => {
-    if (getUserByEmail(email)) return false; // Email already taken
-    
-    const newUser: User = {
-      id: 0, // id assigned in saveUser
-      nombre,
-      email,
-      password,
-      rol: 'usuario',
-      estado: 'activo',
-      fechaRegistro: '' // Auto-assigned in saveUser
-    };
-    
-    saveUser(newUser);
-    // Auto login
-    return login(email, password);
+  const register = async (_nombre: string, _email: string, _password: string): Promise<boolean> => {
+    // Para simplificar ahora mismo, los admins solo pueden ser creados por seeder directamente 
+    // en la BD, no dejaremos registro público de admins por seguridad.
+    console.warn("Registro público deshabilitado temporalmente de acuerdo al plan de Exclusividad Admin.");
+    return false;
   };
 
   const updateCurrentUser = (updates: Partial<User>) => {

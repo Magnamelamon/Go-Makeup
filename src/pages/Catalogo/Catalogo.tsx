@@ -1,29 +1,52 @@
 import { useParams, Link } from 'react-router-dom';
-import { getAllProducts } from '../../data/products';
+import { useState, useEffect } from 'react';
+import { Producto } from '../../data/products';
 import ProductCard from '../../components/ProductCard/ProductCard';
 import './Catalogo.css';
 
 const Catalogo = () => {
   const { categoria } = useParams<{ categoria?: string }>();
   
-  const todosLosProductos = getAllProducts();
+  const [todosLosProductos, setTodosLosProductos] = useState<Producto[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState('');
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const res = await fetch('http://localhost:5000/api/products');
+        if (!res.ok) throw new Error('Error al cargar productos');
+        const data = await res.json();
+        setTodosLosProductos(data);
+      } catch (err: any) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProducts();
+  }, [categoria]); // Re-fetch or re-evaluate when category changes
   
   const productosFiltrados = categoria
-    ? todosLosProductos.filter(p => p.categoria.toLowerCase() === categoria.toLowerCase())
+    ? todosLosProductos.filter(p => 
+        p.categoria && p.categoria.trim().toLowerCase() === categoria.trim().toLowerCase()
+      )
     : todosLosProductos;
 
   const categoriasDisponibles = [
-    { id: 'labios', nombre: 'Labios', imagen: 'https://images.unsplash.com/photo-1586495777744-4413f21062fa?w=400' },
+    { id: 'labiales', nombre: 'Labios', imagen: 'https://images.unsplash.com/photo-1586495777744-4413f21062fa?w=400' },
     { id: 'ojos', nombre: 'Ojos', imagen: 'https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=400' },
     { id: 'rostro', nombre: 'Rostro', imagen: 'https://images.unsplash.com/photo-1631214524020-7e18db9a8f92?w=400' },
-    { id: 'uñas', nombre: 'Uñas', imagen: 'https://images.unsplash.com/photo-1604654894610-df63bc536371?w=400' },
-    { id: 'skincare', nombre: 'Skincare', imagen: 'https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=400' },
-    { id: 'accesorios', nombre: 'Accesorios', imagen: 'https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=400' },
+    { id: 'uñas', nombre: 'Uñas', imagen: 'https://images.unsplash.com/photo-1604654894610-df63bc536371?w=400' }
   ];
 
   const tituloPagina = categoria
     ? categoria.charAt(0).toUpperCase() + categoria.slice(1)
     : 'Todos los Productos';
+
+  if (loading) return <div className="catalogo" style={{ textAlign: 'center', padding: '5rem' }}><h2>Cargando catálogo...</h2></div>;
+  if (error) return <div className="catalogo" style={{ textAlign: 'center', padding: '5rem', color: 'red' }}><h2>Error: {error}</h2></div>;
 
   return (
     <div className="catalogo">

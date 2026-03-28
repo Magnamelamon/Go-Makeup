@@ -6,16 +6,13 @@ import Catalogo from './pages/Catalogo/Catalogo';
 import ProductoDetalle from './pages/ProductoDetalle/ProductoDetalle';
 import QuienesSomos from './pages/QuienesSomos/QuienesSomos';
 import PerfilUsuario from './pages/PerfilUsuario/PerfilUsuario';
-import Login from './pages/Login/Login';
+
 import AdminLogin from './pages/AdminLogin/AdminLogin';
 import AdminLayout from './components/AdminLayout/AdminLayout';
 import AdminProductos from './pages/AdminProductos/AdminProductos';
-import AdminPedidos from './pages/AdminPedidos/AdminPedidos';
-import AdminUsuarios from './pages/AdminUsuarios/AdminUsuarios';
-import AdminInteracciones from './pages/AdminInteracciones/AdminInteracciones';
 import { AuthProvider } from './context/AuthContext';
-import './styles/global.css';
 import './index.css';
+import './styles/global.css';
 
 function App() {
   return (
@@ -28,7 +25,6 @@ function App() {
           <Route path="/catalogo/:categoria" element={<><Navbar /><Catalogo /><Footer /></>} />
           <Route path="/producto/:id" element={<><Navbar /><ProductoDetalle /><Footer /></>} />
           <Route path="/perfil" element={<><Navbar /><PerfilUsuario /><Footer /></>} />
-          <Route path="/login" element={<><Navbar /><Login /><Footer /></>} />
           <Route path="/quienes-somos" element={<><Navbar /><QuienesSomos /><Footer /></>} />
           
           {/* Admin Login Route without public Navbar */}
@@ -38,9 +34,6 @@ function App() {
           <Route path="/admin" element={<AdminLayout />}>
             <Route index element={<Navigate to="/admin/productos" replace />} />
             <Route path="productos" element={<AdminProductos />} />
-            <Route path="pedidos" element={<AdminPedidos />} />
-            <Route path="usuarios" element={<AdminUsuarios />} />
-            <Route path="interacciones" element={<AdminInteracciones />} />
           </Route>
         </Routes>
       </BrowserRouter>

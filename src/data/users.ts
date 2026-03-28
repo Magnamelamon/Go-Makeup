@@ -10,10 +10,7 @@ export interface User {
 
 const STORAGE_KEY = 'gomakeup_users';
 
-const initialUsersData: User[] = [
-  { id: 1, nombre: 'Admin', email: 'admin@gomakeup.com', rol: 'admin', estado: 'activo', fechaRegistro: '01/Ene/2026', password: 'admin123' },
-  { id: 2, nombre: 'Usuario', email: 'usuario@gomakeup.com', rol: 'usuario', estado: 'activo', fechaRegistro: '01/Feb/2026', password: 'user123' },
-];
+const initialUsersData: User[] = [];
 
 export const initializeUsersDB = () => {
   const stored = localStorage.getItem(STORAGE_KEY);

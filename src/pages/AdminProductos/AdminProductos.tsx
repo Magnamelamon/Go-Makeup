@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import Papa from 'papaparse';
-import { getAllProducts, saveProducto, deleteProducto, bulkSaveProducts, type Producto, type Variante } from '../../data/products';
+import { type Producto, type Variante } from '../../data/products';
 import { 
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Cell 
 } from 'recharts';
@@ -12,31 +12,78 @@ const AdminProductos = () => {
   const [nuevoProducto, setNuevoProducto] = useState<Partial<Producto>>({
     id: '', nombre: '', descripcion: '', categoria: 'labiales', urlShein: '', urlTiktok: '', variantes: []
   });
+  
+  // Nuevo Estado para el creador de variantes
+  const [nuevaVariante, setNuevaVariante] = useState<Variante>({
+    id_variante: `var-${Date.now()}`, color: '#ff0000', color_nombre: '', precio: 0, precio_descuento: null, stock: 0, imagenes: []
+  });
+  const [subiendoImagen, setSubiendoImagen] = useState(false);
+
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     cargarProductos();
-  }, []);
+  }, [modo]); // Recargar al volver a la lista
 
-  const cargarProductos = () => {
-    setProductos(getAllProducts());
-  };
-
-  const handleDelete = (id: string) => {
-    if (confirm('¿Estás seguro de eliminar este producto?')) {
-      deleteProducto(id);
-      cargarProductos();
+  const cargarProductos = async () => {
+    try {
+      const response = await fetch('http://localhost:5000/api/products');
+      if (response.ok) {
+        const data = await response.json();
+        setProductos(data);
+      }
+    } catch (error) {
+      console.error('Error fetching products:', error);
+      alert('Error cargando los productos desde la base de datos.');
     }
   };
 
-  const handleSave = (e: React.FormEvent) => {
+  const handleDelete = async (id: string) => {
+    if (confirm('¿Estás seguro de eliminar este producto de PostgreSQL? Esta acción no se puede deshacer.')) {
+      try {
+        const res = await fetch(`http://localhost:5000/api/products/${id}`, { method: 'DELETE' });
+        if (res.ok) {
+          cargarProductos();
+        } else {
+          alert('Error al eliminar');
+        }
+      } catch (error) {
+        console.error('Error:', error);
+      }
+    }
+  };
+
+  const handleSave = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!nuevoProducto.id) {
-      nuevoProducto.id = `prod-${Date.now()}`;
+    
+    const isEditing = !!productos.find(p => p.id === nuevoProducto.id);
+    const method = isEditing ? 'PUT' : 'POST';
+    const finalProductId = nuevoProducto.id || `prod-${Date.now()}`;
+    const url = isEditing 
+      ? `http://localhost:5000/api/products/${finalProductId}` 
+      : 'http://localhost:5000/api/products';
+
+    const payload = { ...nuevoProducto, id: finalProductId };
+
+    try {
+      const response = await fetch(url, {
+        method,
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(payload)
+      });
+
+      if (response.ok) {
+        setModo('lista');
+      } else {
+        const errorData = await response.json();
+        alert(`Error al guardar: ${errorData.message}`);
+      }
+    } catch (error) {
+      console.error('Save error:', error);
+      alert('Error de conexión al servidor al guardar.');
     }
-    saveProducto(nuevoProducto as Producto);
-    setModo('lista');
-    cargarProductos();
   };
 
   const handleEdit = (prod: Producto) => {
@@ -55,6 +102,22 @@ const AdminProductos = () => {
   const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
+
+    const subirLista = async (lista: Producto[]) => {
+      try {
+        for (const prod of lista) {
+          await fetch('http://localhost:5000/api/products', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(prod)
+          });
+        }
+        cargarProductos();
+        alert('¡Feed cargado y sincronizado exitosamente con la base de datos!');
+      } catch (err) {
+        alert('Error conectando a la base de datos al subir el feed.');
+      }
+    };
 
     if (file.name.endsWith('.csv')) {
       Papa.parse(file, {
@@ -94,9 +157,7 @@ const AdminProductos = () => {
             }
           });
           
-          bulkSaveProducts(Array.from(parsedProducts.values()));
-          cargarProductos();
-          alert('¡Feed CSV cargado y sincronizado exitosamente!');
+          subirLista(Array.from(parsedProducts.values()));
         },
         error: (error: Error) => {
           alert('Error parseando CSV: ' + error.message);
@@ -109,9 +170,7 @@ const AdminProductos = () => {
         try {
           const jsonContent = JSON.parse(event.target?.result as string);
           if (Array.isArray(jsonContent)) {
-            bulkSaveProducts(jsonContent);
-            cargarProductos();
-            alert('¡Feed JSON cargado y sincronizado exitosamente!');
+            subirLista(jsonContent);
           } else {
             alert('El archivo JSON debe contener un arreglo de productos.');
           }
@@ -125,6 +184,102 @@ const AdminProductos = () => {
       alert('Formato de archivo no soportado. Sube un .json o .csv');
       if (fileInputRef.current) fileInputRef.current.value = '';
     }
+  };
+
+  const procesarSubida = async (fileOrUrl: File | string) => {
+    setSubiendoImagen(true);
+    
+    try {
+      let imageUrl = '';
+      
+      if (typeof fileOrUrl === 'string') {
+        const response = await fetch('http://localhost:5000/api/upload-url', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ url: fileOrUrl }),
+        });
+        if (!response.ok) throw new Error('Error al descargar la imagen remota');
+        imageUrl = await response.json();
+      } else {
+        const formData = new FormData();
+        formData.append('image', fileOrUrl);
+        const response = await fetch('http://localhost:5000/api/upload', {
+          method: 'POST',
+          body: formData,
+        });
+        if (!response.ok) throw new Error('Error al subir la imagen local');
+        imageUrl = await response.json();
+      }
+
+      const fullImageUrl = `http://localhost:5000${imageUrl}`;
+      setNuevaVariante(prev => ({
+        ...prev,
+        imagenes: [...prev.imagenes, fullImageUrl]
+      }));
+      
+    } catch (error: any) {
+      alert(error.message || 'Hubo un error procesando la imagen.');
+    } finally {
+      setSubiendoImagen(false);
+    }
+  };
+
+  const handleVariantFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      procesarSubida(file);
+      e.target.value = ''; // Reset input
+    }
+  };
+
+  const handleDrop = (e: React.DragEvent<HTMLDivElement>) => {
+    e.preventDefault();
+    if (subiendoImagen) return;
+    
+    // Check for a dropped URL (Pinterest, Drive, Google Images)
+    const urlStr = e.dataTransfer.getData('text/uri-list') || e.dataTransfer.getData('text/plain');
+    if (urlStr && urlStr.startsWith('http')) {
+      const cleanUrl = urlStr.split('\n')[0].trim();
+      return procesarSubida(cleanUrl);
+    }
+
+    // Otherwise standard local file drops
+    if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
+      procesarSubida(e.dataTransfer.files[0]);
+    }
+  };
+
+  const handleUrlPaste = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      const url = e.currentTarget.value.trim();
+      if (url.startsWith('http')) {
+        procesarSubida(url);
+        e.currentTarget.value = '';
+      }
+    }
+  };
+
+  const agregarVariante = () => {
+    if (!nuevaVariante.color_nombre || nuevaVariante.precio <= 0) {
+      alert('Debes ingresar al menos el nombre del color y un precio válido.');
+      return;
+    }
+    setNuevoProducto(prev => ({
+      ...prev,
+      variantes: [...(prev.variantes || []), { ...nuevaVariante, id_variante: `var-${Date.now()}` }]
+    }));
+    // Resetear form de variante
+    setNuevaVariante({
+      id_variante: `var-${Date.now()}`, color: '#ff0000', color_nombre: '', precio: 0, precio_descuento: null, stock: 0, imagenes: []
+    });
+  };
+
+  const eliminarVariante = (id_variante: string) => {
+    setNuevoProducto(prev => ({
+      ...prev,
+      variantes: (prev.variantes || []).filter(v => v.id_variante !== id_variante)
+    }));
   };
 
   // Datos para gráfica
@@ -255,7 +410,7 @@ const AdminProductos = () => {
             <div className="form-group">
               <label>Categoría</label>
               <select value={nuevoProducto.categoria} onChange={e => setNuevoProducto({...nuevoProducto, categoria: e.target.value})}>
-                <option value="labios">Labios</option>
+                <option value="labiales">Labios</option>
                 <option value="ojos">Ojos</option>
                 <option value="rostro">Rostro</option>
                 <option value="uñas">Uñas</option>
@@ -272,24 +427,93 @@ const AdminProductos = () => {
               />
             </div>
             <div className="form-group span-full variant-builder">
-              <h4>Generador de Variantes (Simulado)</h4>
-              <p className="helper-text">Agrega la información de una variante básica para completar la carga inicial.</p>
+              <h4>Variantes del Producto</h4>
               
-              <div className="variant-row" style={{ gridTemplateColumns: '1fr 1fr 1fr 1fr' }}>
-                <input type="text" placeholder="Nombre Color (Ej. Rojo Rubí)" />
-                <input type="color" defaultValue="#ff0000" />
-                <input type="number" placeholder="Precio ($)" />
-                <input type="number" placeholder="Stock" />
+              {/* Lista de variantes agregadas */}
+              {nuevoProducto.variantes && nuevoProducto.variantes.length > 0 && (
+                <div className="variants-list" style={{ marginBottom: '24px' }}>
+                  {nuevoProducto.variantes.map(v => (
+                    <div key={v.id_variante} className="variants-list-item">
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                        <div style={{ width: '24px', height: '24px', borderRadius: '50%', backgroundColor: v.color, border: '2px solid white', boxShadow: '0 0 0 1px #e5e7eb' }}></div>
+                        <strong style={{ fontSize: '1.1rem' }}>{v.color_nombre}</strong>
+                        <span style={{ color: '#6b7280' }}>|</span>
+                        <span style={{ fontWeight: '500' }}>${v.precio}</span>
+                        <span style={{ color: '#6b7280' }}>|</span>
+                        <span style={{ color: v.stock > 0 ? '#10b981' : '#ef4444', fontWeight: '500' }}>{v.stock} uds.</span>
+                        <span style={{ color: '#6b7280' }}>|</span>
+                        <span style={{ fontSize: '0.9rem', color: '#6b7280' }}>📸 {v.imagenes.length} foto(s)</span>
+                      </div>
+                      <button type="button" onClick={() => eliminarVariante(v.id_variante)} className="btn-icon delete" title="Eliminar Variante">🗑️</button>
+                    </div>
+                  ))}
+                </div>
+              )}
+
+              <p className="helper-text" style={{ fontWeight: '500', marginBottom: '8px' }}>Paso 1: Información de la variante</p>
+              
+              <div className="variant-row">
+                <input type="text" placeholder="Nombre Color (Ej. Rojo Rubí)" value={nuevaVariante.color_nombre} onChange={e => setNuevaVariante({...nuevaVariante, color_nombre: e.target.value})} />
+                <input type="color" value={nuevaVariante.color} onChange={e => setNuevaVariante({...nuevaVariante, color: e.target.value})} />
+                <input type="number" placeholder="Precio ($)" value={nuevaVariante.precio || ''} onChange={e => setNuevaVariante({...nuevaVariante, precio: parseFloat(e.target.value) || 0})} />
+                <input type="number" placeholder="Stock" value={nuevaVariante.stock || ''} onChange={e => setNuevaVariante({...nuevaVariante, stock: parseInt(e.target.value) || 0})} />
               </div>
-              <p className="helper-text" style={{marginTop: '12px'}}>Imágenes de la variante (Hasta 5):</p>
-              <div className="variant-images" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 1fr 1fr', gap: '8px', marginTop: '8px' }}>
-                <input type="text" placeholder="URL Foto 1 (Principal)" />
-                <input type="text" placeholder="URL Foto 2" />
-                <input type="text" placeholder="URL Foto 3" />
-                <input type="text" placeholder="URL Foto 4" />
-                <input type="text" placeholder="URL Foto 5" />
+              
+              <div style={{ marginTop: '24px' }}>
+                <p className="helper-text" style={{ fontWeight: '500', marginBottom: '12px' }}>Paso 2: Imágenes (Máximo 5)</p>
+                <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap' }}>
+                  
+                  {nuevaVariante.imagenes.length < 5 && (
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                      <div 
+                        className="file-upload-wrapper"
+                        onDragOver={(e) => e.preventDefault()}
+                        onDrop={handleDrop}
+                        title="Arrastra una foto local o solta un link web aquí"
+                      >
+                        <span className="file-upload-icon">📸</span>
+                        <span className="file-upload-text">
+                          {subiendoImagen ? 'Procesando...' : 'Arrastra / Clic aquí'}
+                        </span>
+                        <input 
+                          type="file" 
+                          accept="image/*" 
+                          onChange={handleVariantFileUpload}
+                          disabled={subiendoImagen}
+                        />
+                      </div>
+                      <input 
+                         type="url" 
+                         placeholder="O pega link y pulsa Enter..." 
+                         style={{ padding: '8px 12px', borderRadius: '8px', border: '1px solid #d1d5db', outline: 'none', width: '100%', fontSize: '0.8rem', background: '#f9fafb' }}
+                         onKeyDown={handleUrlPaste}
+                         disabled={subiendoImagen}
+                      />
+                    </div>
+                  )}
+
+                  <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
+                    {nuevaVariante.imagenes.map((img, idx) => (
+                      <div key={idx} style={{ position: 'relative', width: '100px', height: '100px', borderRadius: '12px', overflow: 'hidden', boxShadow: '0 2px 8px rgba(0,0,0,0.1)' }}>
+                        <img src={img} alt={`Preview ${idx}`} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                        <button 
+                          type="button"
+                          onClick={() => setNuevaVariante(prev => ({...prev, imagenes: prev.imagenes.filter((_, i) => i !== idx)}))}
+                          style={{ position: 'absolute', top: 4, right: 4, background: 'rgba(239, 68, 68, 0.9)', color: 'white', borderRadius: '50%', width: '24px', height: '24px', fontSize: '12px', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+                          title="Eliminar foto"
+                        >
+                          ✕
+                        </button>
+                      </div>
+                    ))}
+                  </div>
+
+                </div>
               </div>
-              <button type="button" className="btn-add-variant">+ Agregar Otra Variante</button>
+
+              <button type="button" className="btn-add-variant" onClick={agregarVariante}>
+                <span>✨</span> Confirmar y Añadir Variante al Producto
+              </button>
             </div>
           </div>
           <div className="form-actions">

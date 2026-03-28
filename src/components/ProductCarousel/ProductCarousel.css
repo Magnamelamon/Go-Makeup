@@ -54,7 +54,10 @@
 }
 
 .product-carousel-item {
+  width: 280px;
   min-width: 280px;
+  max-width: 280px;
+  flex: 0 0 auto;
 }
 
 @media (max-width: 768px) {
@@ -65,6 +68,9 @@
   }
 
   .product-carousel-item {
+    width: 240px;
     min-width: 240px;
+    max-width: 240px;
+    flex: 0 0 auto;
   }
 }
