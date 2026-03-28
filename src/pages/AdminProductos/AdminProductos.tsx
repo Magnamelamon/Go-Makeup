@@ -283,17 +283,22 @@ const AdminProductos = () => {
     }));
   };
 
-  // Datos para gráfica
+  // Datos para gráfica (normalizado para evitar duplicados como "labiales" vs "Labiales")
   const categoriasStock = productos.reduce((acc: {name: string, stock: number}[], current: Producto) => {
     const totalStock = current.variantes.reduce((sum: number, v: Variante) => sum + v.stock, 0);
-    const existing = acc.find((c: {name: string, stock: number}) => c.name === current.categoria);
+    const normalized = (current.categoria || 'sin categoría').trim().toLowerCase();
+    const displayName = normalized.charAt(0).toUpperCase() + normalized.slice(1);
+    const existing = acc.find((c: {name: string, stock: number}) => c.name === displayName);
     if (existing) {
       existing.stock += totalStock;
     } else {
-      acc.push({ name: current.categoria, stock: totalStock });
+      acc.push({ name: displayName, stock: totalStock });
     }
     return acc;
   }, [] as {name: string, stock: number}[]);
+
+  // Categorías dinámicas extraídas de los productos existentes
+  const categoriasExistentes = [...new Set(productos.map(p => (p.categoria || '').trim().toLowerCase()).filter(Boolean))];
 
   const COLORS = ['#FF2B73', '#D4AF37', '#1F2937', '#E31C60', '#6B7280'];
 
@@ -410,12 +415,23 @@ const AdminProductos = () => {
             </div>
             <div className="form-group">
               <label>Categoría</label>
-              <select value={nuevoProducto.categoria} onChange={e => setNuevoProducto({...nuevoProducto, categoria: e.target.value})}>
-                <option value="labiales">Labios</option>
-                <option value="ojos">Ojos</option>
-                <option value="rostro">Rostro</option>
-                <option value="uñas">Uñas</option>
-              </select>
+              <input 
+                list="categorias-list"
+                type="text" 
+                value={nuevoProducto.categoria} 
+                onChange={e => setNuevoProducto({...nuevoProducto, categoria: e.target.value.toLowerCase()})}
+                placeholder="Escribe o selecciona una categoría"
+                required
+              />
+              <datalist id="categorias-list">
+                {categoriasExistentes.map(cat => (
+                  <option key={cat} value={cat} />
+                ))}
+                {!categoriasExistentes.includes('labiales') && <option value="labiales" />}
+                {!categoriasExistentes.includes('ojos') && <option value="ojos" />}
+                {!categoriasExistentes.includes('rostro') && <option value="rostro" />}
+                {!categoriasExistentes.includes('uñas') && <option value="uñas" />}
+              </datalist>
             </div>
             <div className="form-group">
               <label>ID del Producto</label>

@@ -10,6 +10,7 @@ import PerfilUsuario from './pages/PerfilUsuario/PerfilUsuario';
 import AdminLogin from './pages/AdminLogin/AdminLogin';
 import AdminLayout from './components/AdminLayout/AdminLayout';
 import AdminProductos from './pages/AdminProductos/AdminProductos';
+import AdminUsuarios from './pages/AdminUsuarios/AdminUsuarios';
 import { AuthProvider } from './context/AuthContext';
 import './index.css';
 import './styles/global.css';
@@ -34,6 +35,7 @@ function App() {
           <Route path="/admin" element={<AdminLayout />}>
             <Route index element={<Navigate to="/admin/productos" replace />} />
             <Route path="productos" element={<AdminProductos />} />
+            <Route path="usuarios" element={<AdminUsuarios />} />
           </Route>
         </Routes>
       </BrowserRouter>
