@@ -1,5 +1,6 @@
 import { createContext, useContext, useState, useEffect, type ReactNode } from 'react';
 import { saveUser, type User } from '../data/users';
+import { API_BASE } from '../config/api';
 
 interface AuthContextType {
   user: User | null;
@@ -25,7 +26,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
   const login = async (email: string, password: string): Promise<boolean> => {
     try {
-      const res = await fetch('http://localhost:5000/api/admins/login', {
+      const res = await fetch(`${API_BASE}/admins/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password })

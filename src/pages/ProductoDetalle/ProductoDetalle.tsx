@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import type { Producto, Variante } from '../../data/products';
+import { API_BASE } from '../../config/api';
 import ProductCarousel from '../../components/ProductCarousel/ProductCarousel';
 import './ProductoDetalle.css';
 
@@ -16,7 +17,7 @@ const ProductoDetalle = () => {
     const fetchProduct = async () => {
       setCargando(true);
       try {
-        const res = await fetch(`http://localhost:5000/api/products/${id}`);
+        const res = await fetch(`${API_BASE}/products/${id}`);
         if (!res.ok) throw new Error('Producto no encontrado');
         const prod = await res.json();
         
@@ -27,7 +28,7 @@ const ProductoDetalle = () => {
         }
         
         // Fetch related products (we fetch all and filter for now, later we can add a specific API route)
-        const resAll = await fetch('http://localhost:5000/api/products');
+        const resAll = await fetch(`${API_BASE}/products`);
         const todos = await resAll.json();
         const relacionados = todos.filter((p: Producto) => p.categoria && p.categoria.trim().toLowerCase() === prod.categoria.trim().toLowerCase() && p.id !== prod.id).slice(0, 10);
         setProductosRelacionados(relacionados);

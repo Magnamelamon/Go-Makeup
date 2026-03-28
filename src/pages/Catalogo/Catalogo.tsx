@@ -1,6 +1,7 @@
 import { useParams, Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { Producto } from '../../data/products';
+import { API_BASE } from '../../config/api';
 import ProductCard from '../../components/ProductCard/ProductCard';
 import './Catalogo.css';
 
@@ -14,7 +15,7 @@ const Catalogo = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const res = await fetch('http://localhost:5000/api/products');
+        const res = await fetch(`${API_BASE}/products`);
         if (!res.ok) throw new Error('Error al cargar productos');
         const data = await res.json();
         setTodosLosProductos(data);

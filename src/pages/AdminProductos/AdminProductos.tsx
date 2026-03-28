@@ -4,6 +4,7 @@ import { type Producto, type Variante } from '../../data/products';
 import { 
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Cell 
 } from 'recharts';
+import { API_BASE } from '../../config/api';
 import './AdminProductos.css';
 
 const AdminProductos = () => {
@@ -27,7 +28,7 @@ const AdminProductos = () => {
 
   const cargarProductos = async () => {
     try {
-      const response = await fetch('http://localhost:5000/api/products');
+      const response = await fetch(`${API_BASE}/products`);
       if (response.ok) {
         const data = await response.json();
         setProductos(data);
@@ -41,7 +42,7 @@ const AdminProductos = () => {
   const handleDelete = async (id: string) => {
     if (confirm('¿Estás seguro de eliminar este producto de PostgreSQL? Esta acción no se puede deshacer.')) {
       try {
-        const res = await fetch(`http://localhost:5000/api/products/${id}`, { method: 'DELETE' });
+        const res = await fetch(`${API_BASE}/products/${id}`, { method: 'DELETE' });
         if (res.ok) {
           cargarProductos();
         } else {
@@ -60,8 +61,8 @@ const AdminProductos = () => {
     const method = isEditing ? 'PUT' : 'POST';
     const finalProductId = nuevoProducto.id || `prod-${Date.now()}`;
     const url = isEditing 
-      ? `http://localhost:5000/api/products/${finalProductId}` 
-      : 'http://localhost:5000/api/products';
+      ? `${API_BASE}/products/${finalProductId}` 
+      : `${API_BASE}/products`;
 
     const payload = { ...nuevoProducto, id: finalProductId };
 
@@ -106,7 +107,7 @@ const AdminProductos = () => {
     const subirLista = async (lista: Producto[]) => {
       try {
         for (const prod of lista) {
-          await fetch('http://localhost:5000/api/products', {
+          await fetch(`${API_BASE}/products`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(prod)
@@ -193,7 +194,7 @@ const AdminProductos = () => {
       let imageUrl = '';
       
       if (typeof fileOrUrl === 'string') {
-        const response = await fetch('http://localhost:5000/api/upload-url', {
+        const response = await fetch(`${API_BASE}/upload-url`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ url: fileOrUrl }),
@@ -203,7 +204,7 @@ const AdminProductos = () => {
       } else {
         const formData = new FormData();
         formData.append('image', fileOrUrl);
-        const response = await fetch('http://localhost:5000/api/upload', {
+        const response = await fetch(`${API_BASE}/upload`, {
           method: 'POST',
           body: formData,
         });
@@ -211,7 +212,7 @@ const AdminProductos = () => {
         imageUrl = await response.json();
       }
 
-      const fullImageUrl = `http://localhost:5000${imageUrl}`;
+      const fullImageUrl = `${API_BASE.replace('/api', '')}${imageUrl}`;
       setNuevaVariante(prev => ({
         ...prev,
         imagenes: [...prev.imagenes, fullImageUrl]

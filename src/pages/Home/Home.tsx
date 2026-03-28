@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import Carousel from '../../components/Carousel/Carousel';
 import ProductCarousel from '../../components/ProductCarousel/ProductCarousel';
 import { Producto } from '../../data/products';
+import { API_BASE } from '../../config/api';
 import './Home.css';
 
 const slidesHome = [
@@ -44,7 +45,7 @@ const Home = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const res = await fetch('http://localhost:5000/api/products');
+        const res = await fetch(`${API_BASE}/products`);
         if (!res.ok) throw new Error('Error al cargar productos');
         const data = await res.json();
         setProductos(data);
