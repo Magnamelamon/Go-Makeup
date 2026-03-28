@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { API_BASE } from '../../config/api';
+import { authFetch } from '../../config/auth';
 import './AdminUsuarios.css';
 
 interface AdminUser {
@@ -25,7 +26,7 @@ const AdminUsuarios = () => {
   const cargarUsuarios = async () => {
     try {
       setLoading(true);
-      const res = await fetch(`${API_BASE}/admins`);
+      const res = await authFetch(`${API_BASE}/admins`);
       if (res.ok) {
         const data = await res.json();
         setUsuarios(data);
@@ -56,9 +57,8 @@ const AdminUsuarios = () => {
     if (form.password) payload.password = form.password;
 
     try {
-      const res = await fetch(url, {
+      const res = await authFetch(url, {
         method,
-        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),
       });
 
@@ -84,7 +84,7 @@ const AdminUsuarios = () => {
   const handleDelete = async (id: string, nombre: string) => {
     if (!confirm(`¿Eliminar al administrador "${nombre}"? Esta acción no se puede deshacer.`)) return;
     try {
-      const res = await fetch(`${API_BASE}/admins/${id}`, { method: 'DELETE' });
+      const res = await authFetch(`${API_BASE}/admins/${id}`, { method: 'DELETE' });
       if (res.ok) {
         cargarUsuarios();
       } else {

@@ -5,6 +5,7 @@ import {
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Cell 
 } from 'recharts';
 import { API_BASE } from '../../config/api';
+import { authFetch } from '../../config/auth';
 import './AdminProductos.css';
 
 const AdminProductos = () => {
@@ -42,7 +43,7 @@ const AdminProductos = () => {
   const handleDelete = async (id: string) => {
     if (confirm('¿Estás seguro de eliminar este producto de PostgreSQL? Esta acción no se puede deshacer.')) {
       try {
-        const res = await fetch(`${API_BASE}/products/${id}`, { method: 'DELETE' });
+        const res = await authFetch(`${API_BASE}/products/${id}`, { method: 'DELETE' });
         if (res.ok) {
           cargarProductos();
         } else {
@@ -67,7 +68,7 @@ const AdminProductos = () => {
     const payload = { ...nuevoProducto, id: finalProductId };
 
     try {
-      const response = await fetch(url, {
+      const res = await authFetch(url, {
         method,
         headers: {
           'Content-Type': 'application/json',
@@ -75,10 +76,10 @@ const AdminProductos = () => {
         body: JSON.stringify(payload)
       });
 
-      if (response.ok) {
+      if (res.ok) {
         setModo('lista');
       } else {
-        const errorData = await response.json();
+        const errorData = await res.json();
         alert(`Error al guardar: ${errorData.message}`);
       }
     } catch (error) {
@@ -107,7 +108,7 @@ const AdminProductos = () => {
     const subirLista = async (lista: Producto[]) => {
       try {
         for (const prod of lista) {
-          await fetch(`${API_BASE}/products`, {
+          await authFetch(`${API_BASE}/products`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(prod)
@@ -194,7 +195,7 @@ const AdminProductos = () => {
       let imageUrl = '';
       
       if (typeof fileOrUrl === 'string') {
-        const response = await fetch(`${API_BASE}/upload-url`, {
+        const response = await authFetch(`${API_BASE}/upload-url`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ url: fileOrUrl }),
@@ -204,7 +205,7 @@ const AdminProductos = () => {
       } else {
         const formData = new FormData();
         formData.append('image', fileOrUrl);
-        const response = await fetch(`${API_BASE}/upload`, {
+        const response = await authFetch(`${API_BASE}/upload`, {
           method: 'POST',
           body: formData,
         });
