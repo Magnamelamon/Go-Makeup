@@ -4,19 +4,20 @@
 }
 
 .catalogo-header {
-  background: linear-gradient(135deg, var(--color-rosa-vibrante) 0%, #e5517a 100%);
-  padding: 40px 0;
-  color: var(--color-blanco);
+  background-color: var(--color-surface-container-low);
+  padding: 80px 0 60px;
+  color: var(--color-on-surface);
 }
 
 .catalogo-header h1 {
-  font-size: 2.5rem;
+  font-size: 2.8rem;
   font-weight: 700;
+  font-family: 'Noto Serif', serif;
 }
 
 .catalogo-header p {
-  opacity: 0.9;
-  margin-top: 8px;
+  color: var(--color-on-surface-variant);
+  margin-top: 12px;
 }
 
 .catalogo-container {
@@ -32,8 +33,9 @@
 
 .catalogo-filtros h3 {
   font-size: 1.1rem;
-  color: var(--color-rosa-vibrante);
+  color: var(--color-primary);
   margin-bottom: 16px;
+  font-family: 'Noto Serif', serif;
 }
 
 .catalogo-filtros ul {
@@ -45,13 +47,13 @@
 }
 
 .catalogo-filtros ul li a {
-  color: var(--color-texto);
+  color: var(--color-secondary);
   font-weight: 500;
   transition: var(--transicion);
 }
 
 .catalogo-filtros ul li a:hover {
-  color: var(--color-rosa-vibrante);
+  color: var(--color-primary);
   padding-left: 8px;
 }
 
@@ -78,7 +80,8 @@
   overflow: hidden;
   position: relative;
   display: block;
-  box-shadow: var(--sombra);
+  background-color: var(--color-surface-container);
+  box-shadow: none;
 }
 
 .categoria-tarjeta img {
@@ -101,9 +104,10 @@
   bottom: 0;
   left: 0;
   right: 0;
-  background: rgba(255, 43, 115, 0.85);
-  color: var(--color-blanco);
-  padding: 12px;
+  background: rgba(250, 249, 246, 0.6);
+  backdrop-filter: blur(8px);
+  color: var(--color-on-surface);
+  padding: 16px;
   text-align: center;
   font-weight: 600;
 }

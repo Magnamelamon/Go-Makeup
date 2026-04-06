@@ -3,16 +3,17 @@
 }
 
 .titulo-seccion {
-  font-size: 2rem;
+  font-size: 2.5rem;
   font-weight: 700;
-  color: var(--color-texto);
+  font-family: 'Noto Serif', serif;
+  color: var(--color-on-surface);
   text-align: center;
-  margin-bottom: 40px;
+  margin-bottom: 56px;
 }
 
 .categorias-section {
-  padding: 60px 0;
-  background-color: var(--color-blanco);
+  padding: 80px 0;
+  background-color: var(--color-surface);
 }
 
 .categorias-grid {
@@ -53,7 +54,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(to top, rgba(255, 43, 115, 0.85), transparent 60%);
+  background: linear-gradient(to top, rgba(26, 28, 26, 0.6), transparent 80%);
   display: flex;
   align-items: flex-end;
   justify-content: center;
@@ -63,7 +64,7 @@
 }
 
 .categoria-card:hover .categoria-overlay {
-  background: linear-gradient(to top, rgba(227, 28, 96, 0.95), transparent 70%);
+  background: linear-gradient(to top, rgba(26, 28, 26, 0.8), transparent 80%);
   padding-bottom: 36px;
 }
 
@@ -75,54 +76,62 @@
 }
 
 .productos-section {
-  background-color: var(--color-nude-rosado-1);
+  background-color: var(--color-surface-container-low);
+  padding: 60px 0;
 }
 
 .banner-promo {
   display: flex;
   align-items: center;
-  background: linear-gradient(135deg, var(--color-rosa-vibrante) 0%, #e5517a 100%);
-  overflow: hidden;
-  max-height: 400px;
+  background-color: var(--color-surface);
+  padding: 80px 20px;
+  position: relative;
+  justify-content: center;
 }
 
 .banner-content {
-  flex: 1;
-  padding: 40px;
-  color: var(--color-blanco);
+  flex: 0 1 400px;
+  padding: 48px;
+  background-color: var(--color-surface-container-low);
+  color: var(--color-on-surface);
+  z-index: 2;
+  margin-right: -80px; /* Asymmetric Overlap */
+  border-radius: var(--borde-radio-lg);
 }
 
 .banner-subtitulo {
   font-size: 0.9rem;
   text-transform: uppercase;
   letter-spacing: 2px;
-  color: var(--color-dorado);
+  color: var(--color-secondary);
   font-weight: 600;
 }
 
 .banner-titulo {
-  font-size: 2.2rem;
+  font-family: 'Noto Serif', serif;
+  font-size: 2.8rem;
   font-weight: 800;
-  margin: 12px 0;
+  margin: 16px 0;
+  line-height: 1.1;
+  color: var(--color-on-surface);
 }
 
 .banner-descripcion {
   font-size: 1rem;
-  opacity: 0.9;
-  margin-bottom: 20px;
+  color: var(--color-on-surface-variant);
+  margin-bottom: 32px;
 }
 
 .banner-imagen {
-  flex: 1;
-  padding: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  flex: 0 1 600px;
+  z-index: 1;
+  overflow: hidden;
+  border-radius: var(--borde-radio);
 }
 
 .banner-imagen img {
-  max-height: 350px;
-  width: auto;
+  width: 100%;
+  height: auto;
   border-radius: var(--borde-radio);
   object-fit: cover;
 }
@@ -133,13 +142,13 @@
   }
 
   .banner-promo {
-    flex-direction: column;
-    text-align: center;
-    max-height: none;
+    flex-direction: column-reverse;
   }
 
   .banner-content {
-    padding: 30px 20px;
+    margin-right: 0;
+    margin-top: -60px;
+    padding: 30px;
   }
 }
 

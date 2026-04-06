@@ -1,13 +1,13 @@
 .product-card {
-  background-color: var(--color-blanco);
+  background-color: var(--color-surface-container-lowest);
   border-radius: var(--borde-radio);
   overflow: hidden;
-  box-shadow: var(--sombra);
+  box-shadow: none;
   transition: var(--transicion);
 }
 
 .product-card:hover {
-  transform: translateY(-8px);
+  transform: translateY(-4px);
   box-shadow: var(--sombra-hover);
 }
 
@@ -17,7 +17,7 @@
   width: 100%;
   aspect-ratio: 1;
   overflow: hidden;
-  background-color: var(--color-nude-rosado-2);
+  background-color: var(--color-surface-container);
 }
 
 .product-card-image img {
@@ -37,7 +37,8 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(240, 98, 146, 0.8);
+  background: rgba(250, 249, 246, 0.4);
+  backdrop-filter: blur(4px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -50,28 +51,28 @@
 }
 
 .product-card-overlay span {
-  color: var(--color-blanco);
+  color: var(--color-on-surface);
   font-weight: 600;
   font-size: 1rem;
 }
 
 .product-card-content {
-  padding: 16px;
+  padding: 24px 16px;
 }
 
 .product-card-marca {
   font-size: 0.75rem;
-  color: var(--color-dorado);
+  color: var(--color-secondary);
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 1px;
 }
 
 .product-card-nombre {
-  font-size: 1rem;
-  font-weight: 500;
-  margin: 8px 0;
-  color: var(--color-texto);
+  font-size: 1.25rem;
+  font-weight: 600; /* Noto Serif applies globally to h3, making it Serif */
+  margin: 12px 0;
+  color: var(--color-on-surface);
   line-height: 1.4;
 }
 
@@ -79,13 +80,13 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-top: 12px;
+  margin-top: 16px;
 }
 
 .product-card-precio {
   font-size: 1.25rem;
-  font-weight: 700;
-  color: var(--color-rosa-vibrante);
+  font-weight: 500;
+  color: var(--color-on-surface);
   display: flex;
   align-items: center;
   gap: 8px;
@@ -93,20 +94,20 @@
 
 .product-card-precio .precio-original {
   font-size: 0.9rem;
-  color: #999;
+  color: var(--color-outline-variant);
   text-decoration: line-through;
 }
 
 .product-card-precio .precio-descuento {
-  color: var(--color-rosa-vibrante);
+  color: var(--color-on-surface);
 }
 
 .product-card-btn {
   width: 40px;
   height: 40px;
-  border-radius: 50%;
-  background-color: var(--color-rosa-vibrante);
-  color: var(--color-blanco);
+  border-radius: var(--borde-radio-full);
+  background-color: var(--color-surface-container-highest);
+  color: var(--color-on-surface);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -114,6 +115,7 @@
 }
 
 .product-card-btn:hover {
-  background-color: var(--color-dorado);
-  transform: scale(1.1);
+  background-color: var(--color-primary);
+  color: var(--color-on-primary);
+  transform: scale(1.05);
 }
