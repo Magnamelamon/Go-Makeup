@@ -11,6 +11,7 @@ import './AdminProductos.css';
 const AdminProductos = () => {
   const [productos, setProductos] = useState<Producto[]>([]);
   const [modo, setModo] = useState<'lista' | 'crear'>('lista');
+  const [esEdicion, setEsEdicion] = useState(false);
   const [nuevoProducto, setNuevoProducto] = useState<Partial<Producto>>({
     id: '', nombre: '', descripcion: '', categoria: 'labiales', marca: '', urlShein: '', urlTiktok: '', variantes: []
   });
@@ -58,10 +59,10 @@ const AdminProductos = () => {
   const handleSave = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    const isEditing = !!productos.find(p => p.id === nuevoProducto.id);
-    const method = isEditing ? 'PUT' : 'POST';
+    // We can rely on esEdicion flag to know if we are doing PUT or POST
+    const method = esEdicion ? 'PUT' : 'POST';
     const finalProductId = nuevoProducto.id || `prod-${Date.now()}`;
-    const url = isEditing 
+    const url = esEdicion 
       ? `${API_BASE}/products/${finalProductId}` 
       : `${API_BASE}/products`;
 
@@ -91,6 +92,7 @@ const AdminProductos = () => {
   const handleEdit = (prod: Producto) => {
     // Clona el producto para no mutar el estado original accidentalmente
     setNuevoProducto(JSON.parse(JSON.stringify(prod)));
+    setEsEdicion(true);
     setModo('crear');
   };
 
@@ -98,6 +100,7 @@ const AdminProductos = () => {
     setNuevoProducto({
       id: '', nombre: '', descripcion: '', categoria: 'labiales', marca: '', urlShein: '', urlTiktok: '', variantes: []
     });
+    setEsEdicion(false);
     setModo('crear');
   };
 
@@ -449,7 +452,7 @@ const AdminProductos = () => {
                 value={nuevoProducto.id} 
                 onChange={e => setNuevoProducto({...nuevoProducto, id: e.target.value})} 
                 placeholder="Autogenerado si está vacío" 
-                disabled={!!nuevoProducto.id && modo === 'crear'} // Si ya tiene ID al entrar a modo crear (edición), se deshabilita
+                disabled={esEdicion} 
               />
             </div>
             <div className="form-group span-full variant-builder">
