@@ -11,16 +11,18 @@
 }
 
 .admin-page-header h1 {
-  font-size: 1.8rem;
-  color: #111827;
+  font-family: 'Noto Serif', serif;
+  font-size: 2rem;
+  color: var(--color-on-surface);
   font-weight: 700;
 }
 
 .chart-container {
-  background: white;
+  background: var(--color-surface-container-lowest);
   border-radius: var(--borde-radio);
   padding: 24px;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  box-shadow: none;
+  border: 1px solid var(--color-surface-container-highest);
 }
 
 .chart-container h3 {
@@ -30,10 +32,11 @@
 }
 
 .table-container {
-  background: white;
+  background: var(--color-surface-container-lowest);
   border-radius: var(--borde-radio);
   overflow: hidden;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  box-shadow: none;
+  border: 1px solid var(--color-surface-container-highest);
 }
 
 .admin-table {
@@ -42,14 +45,14 @@
 }
 
 .admin-table th {
-  background-color: #f9fafb;
+  background-color: var(--color-surface-container-low);
   padding: 16px;
   text-align: left;
   font-size: 0.8rem;
   font-weight: 600;
   text-transform: uppercase;
-  color: #6b7280;
-  border-bottom: 1px solid #e5e7eb;
+  color: var(--color-on-surface-variant);
+  border-bottom: 1px solid var(--color-surface-container-highest);
 }
 
 .admin-table td {
@@ -91,10 +94,11 @@
 
 /* Form Styles */
 .admin-form-container {
-  background: white;
+  background: var(--color-surface-container-lowest);
   border-radius: var(--borde-radio);
   padding: 32px;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  box-shadow: none;
+  border: 1px solid var(--color-surface-container-highest);
 }
 
 .form-grid {
@@ -136,10 +140,10 @@
 .form-group input:focus,
 .form-group textarea:focus,
 .form-group select:focus {
-  border-color: var(--color-rosa-vibrante);
+  border-color: var(--color-primary);
   outline: none;
-  background-color: white;
-  box-shadow: 0 0 0 3px rgba(255, 43, 115, 0.1);
+  background-color: var(--color-surface-container-lowest);
+  box-shadow: 0 0 0 3px rgba(162, 160, 160, 0.1);
 }
 
 .form-actions {
