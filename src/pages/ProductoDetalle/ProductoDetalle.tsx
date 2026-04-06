@@ -14,6 +14,7 @@ const ProductoDetalle = () => {
   const [productosRelacionados, setProductosRelacionados] = useState<Producto[]>([]);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     const fetchProduct = async () => {
       setCargando(true);
       try {
