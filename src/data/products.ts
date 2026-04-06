@@ -13,6 +13,7 @@ export interface Producto {
   nombre: string;
   descripcion: string;
   categoria: string;
+  marca?: string;
   variantes: Variante[];
   urlShein?: string;
   urlTiktok?: string;

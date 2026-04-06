@@ -18,6 +18,10 @@ export const Catalog = sequelize.define('Catalog', {
     type: DataTypes.STRING,
     allowNull: false,
   },
+  marca: {
+    type: DataTypes.STRING,
+    allowNull: true,
+  },
   urlShein: {
     type: DataTypes.STRING,
     allowNull: true,

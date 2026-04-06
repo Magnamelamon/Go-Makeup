@@ -12,7 +12,7 @@ const AdminProductos = () => {
   const [productos, setProductos] = useState<Producto[]>([]);
   const [modo, setModo] = useState<'lista' | 'crear'>('lista');
   const [nuevoProducto, setNuevoProducto] = useState<Partial<Producto>>({
-    id: '', nombre: '', descripcion: '', categoria: 'labiales', urlShein: '', urlTiktok: '', variantes: []
+    id: '', nombre: '', descripcion: '', categoria: 'labiales', marca: '', urlShein: '', urlTiktok: '', variantes: []
   });
   
   // Nuevo Estado para el creador de variantes
@@ -96,7 +96,7 @@ const AdminProductos = () => {
 
   const handleCreateNew = () => {
     setNuevoProducto({
-      id: '', nombre: '', descripcion: '', categoria: 'labiales', urlShein: '', urlTiktok: '', variantes: []
+      id: '', nombre: '', descripcion: '', categoria: 'labiales', marca: '', urlShein: '', urlTiktok: '', variantes: []
     });
     setModo('crear');
   };
@@ -136,7 +136,8 @@ const AdminProductos = () => {
                 id: row.id,
                 nombre: row.nombre,
                 descripcion: row.descripcion || '',
-                categoria: row.categoria || 'labiales',
+                categoria: (row.categoria || 'labiales').trim().toLowerCase(),
+                marca: row.marca || row.brand || '',
                 urlShein: row.urlShein || '',
                 urlTiktok: row.urlTiktok || '',
                 variantes: []
@@ -369,7 +370,10 @@ const AdminProductos = () => {
                   return (
                     <tr key={prod.id}>
                       <td className="font-mono text-sm text-gray-500">#{prod.id}</td>
-                      <td className="font-medium">{prod.nombre}</td>
+                      <td className="font-medium">
+                        {prod.nombre}
+                        {prod.marca && <div style={{ fontSize: '0.8rem', color: '#6b7280' }}>Marca: {prod.marca}</div>}
+                      </td>
                       <td><span className="categoria-badge">{prod.categoria}</span></td>
                       <td>{prod.variantes.length} colores</td>
                       <td>
@@ -413,6 +417,10 @@ const AdminProductos = () => {
             <div className="form-group span-full">
               <label>URL de TikTok Shop (Opcional)</label>
               <input type="url" value={nuevoProducto.urlTiktok || ''} onChange={e => setNuevoProducto({...nuevoProducto, urlTiktok: e.target.value})} placeholder="https://tiktok.com/..." />
+            </div>
+            <div className="form-group span-full">
+              <label>Marca (Opcional)</label>
+              <input type="text" value={nuevoProducto.marca || ''} onChange={e => setNuevoProducto({...nuevoProducto, marca: e.target.value})} placeholder="Ej. Maybelline, L'Oréal..." />
             </div>
             <div className="form-group">
               <label>Categoría</label>

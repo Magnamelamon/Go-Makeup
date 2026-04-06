@@ -48,10 +48,12 @@ router.post('/', protect, async (req, res) => {
   const t = await sequelize.transaction();
 
   try {
-    const { id, nombre, descripcion, categoria, urlShein, urlTiktok, variantes } = req.body;
+    let { id, nombre, descripcion, categoria, marca, urlShein, urlTiktok, variantes } = req.body;
+
+    const categoriaNorm = categoria ? categoria.trim().toLowerCase() : '';
 
     const product = await Catalog.create({
-      id, nombre, descripcion, categoria, urlShein, urlTiktok
+      id, nombre, descripcion, categoria: categoriaNorm, marca, urlShein, urlTiktok
     }, { transaction: t });
 
     if (variantes && variantes.length > 0) {
@@ -75,7 +77,7 @@ router.put('/:id', protect, async (req, res) => {
   const t = await sequelize.transaction();
 
   try {
-    const { nombre, descripcion, categoria, urlShein, urlTiktok, variantes } = req.body;
+    let { nombre, descripcion, categoria, marca, urlShein, urlTiktok, variantes } = req.body;
     const productId = req.params.id;
 
     const product = await Catalog.findByPk(productId);
@@ -84,7 +86,9 @@ router.put('/:id', protect, async (req, res) => {
       return res.status(404).json({ message: 'Producto no encontrado' });
     }
 
-    await product.update({ nombre, descripcion, categoria, urlShein, urlTiktok }, { transaction: t });
+    const categoriaNorm = categoria ? categoria.trim().toLowerCase() : '';
+
+    await product.update({ nombre, descripcion, categoria: categoriaNorm, marca, urlShein, urlTiktok }, { transaction: t });
     await CatalogVariant.destroy({ where: { catalog_id: productId }, transaction: t });
     
     if (variantes && variantes.length > 0) {
