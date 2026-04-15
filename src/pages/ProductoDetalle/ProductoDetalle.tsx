@@ -3,6 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import type { Producto, Variante } from '../../data/products';
 import { API_BASE } from '../../config/api';
 import ProductCarousel from '../../components/ProductCarousel/ProductCarousel';
+import NailTryOnModal from '../../components/widget/NailTryOnModal';
 import './ProductoDetalle.css';
 
 const ProductoDetalle = () => {
@@ -12,6 +13,7 @@ const ProductoDetalle = () => {
   const [varianteActiva, setVarianteActiva] = useState<Variante | null>(null);
   const [imagenPrincipal, setImagenPrincipal] = useState(0);
   const [productosRelacionados, setProductosRelacionados] = useState<Producto[]>([]);
+  const [showVTO, setShowVTO] = useState(false);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -213,6 +215,24 @@ const ProductoDetalle = () => {
                    <div style={{ padding: '15px', background: '#f8f9fa', borderRadius: '8px', textAlign: 'center', color: '#666' }}>
                      Producto disponible próximamente en nuestras tiendas oficiales.
                    </div>
+                )}
+
+                {/* Probador Virtual — Solo para categoría uñas */}
+                {producto.categoria?.toLowerCase() === 'uñas' && (
+                  <>
+                    <button
+                      className="producto-btn-vto"
+                      onClick={() => setShowVTO(true)}
+                    >
+                      💅 Probar este color virtualmente
+                    </button>
+                    {showVTO && (
+                      <NailTryOnModal
+                        onClose={() => setShowVTO(false)}
+                        initialColor={varianteActiva.color}
+                      />
+                    )}
+                  </>
                 )}
               </div>
             </div>

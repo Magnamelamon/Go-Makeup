@@ -1,0 +1,100 @@
+/* ═══════════════════════════════════════════════════════════════════
+   VTO Modal Overlay — Fullscreen container for the widget
+   ═══════════════════════════════════════════════════════════════════ */
+
+.vto-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  animation: vto-modal-fade-in 0.3s ease-out;
+}
+
+@keyframes vto-modal-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.vto-modal-content {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-height: 95vh;
+  max-width: 460px;
+  width: 100%;
+  animation: vto-modal-slide-up 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes vto-modal-slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.vto-modal-close {
+  position: absolute;
+  top: -12px;
+  right: -12px;
+  z-index: 10;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: white;
+  border: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  color: #374151;
+  font-family: system-ui, sans-serif;
+}
+
+.vto-modal-close:hover {
+  background: #be185d;
+  color: white;
+  transform: scale(1.1);
+  box-shadow: 0 6px 20px rgba(190, 24, 93, 0.3);
+}
+
+/* Mobile fullscreen behavior */
+@media (max-width: 480px) {
+  .vto-modal-overlay {
+    padding: 0;
+    align-items: flex-end;
+  }
+
+  .vto-modal-content {
+    max-height: 100vh;
+    max-width: 100%;
+    border-radius: 0;
+  }
+
+  .vto-modal-content .vto-widget-container {
+    border-radius: 20px 20px 0 0;
+    max-width: 100%;
+  }
+
+  .vto-modal-close {
+    top: 12px;
+    right: 12px;
+  }
+}

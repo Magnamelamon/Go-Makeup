@@ -1,0 +1,285 @@
+/* ═══════════════════════════════════════════════════════════════════
+   VTO Widget Styles — Fully namespaced under .vto-*
+   ZERO impact on Go Makeup global styles.
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* ── Design Tokens (scoped) ─────────────────────────────────────── */
+.vto-widget-container {
+  --vto-primary: #be185d;
+  --vto-bg: #fdf2f8;
+  --vto-panel-bg: rgba(255, 255, 255, 0.95);
+  --vto-text-main: #111827;
+  --vto-text-muted: #6b7280;
+  --vto-border: #fbcfe8;
+
+  width: 100%;
+  max-width: 420px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  background: white;
+  padding: 1rem;
+  border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(190, 24, 93, 0.08);
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  color: var(--vto-text-main);
+  box-sizing: border-box;
+}
+
+/* ── AR Vision Layer ────────────────────────────────────────────── */
+.vto-vision-layer {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 16px;
+  overflow: hidden;
+  background-color: #fdf2f8;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+}
+
+.vto-video-feed {
+  display: none;
+}
+
+.vto-output-canvas {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scaleX(-1);
+}
+
+/* ── Hand Guide Overlay ─────────────────────────────────────────── */
+.vto-hand-guide-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60%;
+  height: 75%;
+  border: 3px dashed rgba(255, 255, 255, 0.6);
+  border-radius: 40% 40% 50% 50% / 60% 60% 40% 40%;
+  pointer-events: none;
+  z-index: 5;
+  box-shadow: 0 0 0 9999px rgba(0, 0, 0, 0.25);
+  animation: vto-pulse-guide 2.5s infinite ease-in-out;
+}
+
+@keyframes vto-pulse-guide {
+  0% {
+    opacity: 0.5;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    opacity: 0.9;
+    transform: translate(-50%, -50%) scale(1.02);
+  }
+  100% {
+    opacity: 0.5;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+/* ── Status Bar ─────────────────────────────────────────────────── */
+.vto-top-bar {
+  position: absolute;
+  top: 1rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.vto-status-badge {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 0.4rem 1rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--vto-text-main);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.vto-status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #10b981;
+}
+
+.vto-status-dot.searching {
+  background-color: #f59e0b;
+  animation: vto-pulse 1s infinite alternate;
+}
+
+@keyframes vto-pulse {
+  from {
+    opacity: 0.5;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* ── Bottom Controls ────────────────────────────────────────────── */
+.vto-bottom-controls {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.8rem;
+}
+
+.vto-product-info {
+  text-align: left;
+}
+
+.vto-product-title {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin: 0;
+  letter-spacing: -0.3px;
+}
+
+.vto-product-hex {
+  font-size: 0.85rem;
+  color: var(--vto-text-muted);
+  text-transform: uppercase;
+  margin: 0.2rem 0 0 0;
+  font-weight: 500;
+}
+
+/* ── Color Carousel ─────────────────────────────────────────────── */
+.vto-color-carousel {
+  display: flex;
+  overflow-x: auto;
+  gap: 1rem;
+  padding: 0.5rem 0;
+  width: 100%;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.vto-color-carousel::-webkit-scrollbar {
+  display: none;
+}
+
+.vto-color-swatch-wrapper {
+  flex-shrink: 0;
+  scroll-snap-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  outline: none;
+  background: white;
+}
+
+.vto-color-swatch-wrapper.active {
+  border-color: var(--vto-primary);
+  padding: 3px;
+  transform: scale(1.1);
+}
+
+.vto-color-swatch {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* ── Loader Overlay ─────────────────────────────────────────────── */
+.vto-loader-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(8px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 50;
+  color: var(--vto-text-main);
+  font-weight: 500;
+}
+
+.vto-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid rgba(0, 0, 0, 0.05);
+  border-radius: 50%;
+  border-top-color: var(--vto-primary);
+  animation: vto-spin 1s infinite linear;
+  margin-bottom: 1rem;
+}
+
+@keyframes vto-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ── Desktop QR Handoff ─────────────────────────────────────────── */
+.vto-desktop-qr-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 400px;
+  text-align: center;
+  padding: 2rem;
+  box-sizing: border-box;
+}
+
+.vto-desktop-qr-container h3 {
+  font-size: 1.4rem;
+  color: var(--vto-primary);
+  margin-bottom: 0.5rem;
+}
+
+.vto-desktop-qr-container p {
+  color: var(--vto-text-muted);
+  font-size: 0.95rem;
+  margin-bottom: 2rem;
+  line-height: 1.5;
+}
+
+.vto-qr-code-img {
+  width: 180px;
+  height: 180px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  padding: 10px;
+  background: white;
+  border: 1px solid var(--vto-border);
+}
+
+.vto-qr-copy-btn {
+  margin-top: 1.5rem;
+  padding: 0.7rem 1.5rem;
+  background-color: var(--vto-bg);
+  color: var(--vto-primary);
+  border: 1px solid var(--vto-primary);
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: inherit;
+}
+
+.vto-qr-copy-btn:hover {
+  background-color: var(--vto-primary);
+  color: white;
+}

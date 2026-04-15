@@ -377,3 +377,29 @@
   color: var(--color-texto-claro);
   margin-bottom: 16px;
 }
+
+/* ── Probador Virtual CTA Button ──────────────────────────────── */
+.producto-btn-vto {
+  width: 100%;
+  padding: 16px 32px;
+  background: linear-gradient(135deg, #be185d 0%, #e11d48 100%);
+  color: white;
+  border: none;
+  border-radius: var(--borde-radio);
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transicion);
+  margin-top: 1rem;
+  font-family: inherit;
+  letter-spacing: 0.01em;
+}
+
+.producto-btn-vto:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(190, 24, 93, 0.3);
+}
+
+.producto-btn-vto:active {
+  transform: translateY(0);
+}
