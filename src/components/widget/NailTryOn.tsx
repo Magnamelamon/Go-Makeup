@@ -261,6 +261,7 @@ function NailTryOn({ initialColor }: NailTryOnProps) {
       },
       width: 640,
       height: 480,
+      facingMode: 'environment',
     });
 
     camera.start();
