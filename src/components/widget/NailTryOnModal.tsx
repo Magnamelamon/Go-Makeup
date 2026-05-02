@@ -1,13 +1,15 @@
 import { useEffect, useCallback } from 'react';
 import NailTryOn from './NailTryOn';
+import type { NailColor } from './NailTryOn';
 import './NailTryOnModal.css';
 
 interface NailTryOnModalProps {
   onClose: () => void;
   initialColor?: string;
+  productColors?: NailColor[];
 }
 
-function NailTryOnModal({ onClose, initialColor }: NailTryOnModalProps) {
+function NailTryOnModal({ onClose, initialColor, productColors }: NailTryOnModalProps) {
   // Close on Escape key
   const handleKeyDown = useCallback(
     (e: KeyboardEvent) => {
@@ -40,7 +42,7 @@ function NailTryOnModal({ onClose, initialColor }: NailTryOnModalProps) {
         <button className="vto-modal-close" onClick={onClose} aria-label="Cerrar probador virtual">
           ✕
         </button>
-        <NailTryOn initialColor={initialColor} />
+        <NailTryOn initialColor={initialColor} productColors={productColors} />
       </div>
     </div>
   );

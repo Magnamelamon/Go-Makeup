@@ -4,7 +4,7 @@ import { Hands } from '@mediapipe/hands';
 import { VTO_API_URL } from '../../config/vto';
 import './NailTryOn.css';
 
-interface NailColor {
+export interface NailColor {
   productId: number | string;
   colorName: string;
   hexCode: string;
@@ -12,9 +12,10 @@ interface NailColor {
 
 interface NailTryOnProps {
   initialColor?: string;
+  productColors?: NailColor[];
 }
 
-function NailTryOn({ initialColor }: NailTryOnProps) {
+function NailTryOn({ initialColor, productColors }: NailTryOnProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [isReady, setIsReady] = useState(false);
@@ -140,22 +141,33 @@ function NailTryOn({ initialColor }: NailTryOnProps) {
     nailColorRef.current = nailColor.hexCode;
   }, [nailColor.hexCode]);
 
-  // ── Fetch colors from VTO backend (with mock fallback) ─────────────
+  // ── Load colors: from props (product variants) or VTO backend fallback ──
   useEffect(() => {
+    // Helper to select the initial color from a color list
+    const applyColors = (colors: NailColor[]) => {
+      setApiColors(colors);
+      const match = colors.find(
+        (c) => c.hexCode.toLowerCase() === initialColor?.toLowerCase()
+      );
+      if (match) {
+        setNailColor({ hexCode: match.hexCode, colorName: match.colorName });
+      } else if (colors.length > 0) {
+        setNailColor({ hexCode: colors[0].hexCode, colorName: colors[0].colorName });
+      }
+    };
+
+    // ── Priority 1: Use colors passed directly from the product page ──
+    if (productColors && productColors.length > 0) {
+      applyColors(productColors);
+      return;
+    }
+
+    // ── Priority 2: Fetch from VTO backend (with mock fallback) ──
     fetch(`${VTO_API_URL}/api/colors`)
       .then((res) => res.json())
       .then((data) => {
         if (data.success && data.data && data.data.length > 0) {
-          setApiColors(data.data);
-          // If initialColor matches one in the API, use its name
-          const match = data.data.find(
-            (c: NailColor) => c.hexCode.toLowerCase() === initialColor?.toLowerCase()
-          );
-          if (match) {
-            setNailColor({ hexCode: match.hexCode, colorName: match.colorName });
-          } else {
-            setNailColor({ hexCode: data.data[0].hexCode, colorName: data.data[0].colorName });
-          }
+          applyColors(data.data);
         }
       })
       .catch(() => {
@@ -169,17 +181,9 @@ function NailTryOn({ initialColor }: NailTryOnProps) {
           { productId: 6, colorName: 'Nude Beige', hexCode: '#d6d3d1' },
           { productId: 7, colorName: 'Onyx Black', hexCode: '#171717' },
         ];
-        setApiColors(mockColors);
-        const match = mockColors.find(
-          (c) => c.hexCode.toLowerCase() === initialColor?.toLowerCase()
-        );
-        if (match) {
-          setNailColor({ hexCode: match.hexCode, colorName: match.colorName });
-        } else {
-          setNailColor({ hexCode: mockColors[0].hexCode, colorName: mockColors[0].colorName });
-        }
+        applyColors(mockColors);
       });
-  }, [initialColor]);
+  }, [initialColor, productColors]);
 
   // ── MediaPipe initialization (mobile only) ─────────────────────────
   useEffect(() => {

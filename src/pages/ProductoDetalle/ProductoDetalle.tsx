@@ -230,6 +230,11 @@ const ProductoDetalle = () => {
                       <NailTryOnModal
                         onClose={() => setShowVTO(false)}
                         initialColor={varianteActiva.color}
+                        productColors={producto.variantes.map((v) => ({
+                          productId: v.id_variante,
+                          colorName: v.color_nombre,
+                          hexCode: v.color,
+                        }))}
                       />
                     )}
                   </>
